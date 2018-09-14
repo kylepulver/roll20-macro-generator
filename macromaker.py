@@ -225,7 +225,7 @@ for infile in infiles:
 						times += 1
 
 					if ("persist" in words):
-						footer += "{{Hgt Persist=+%s} %s}}" % (heightenMacro, getWord(words, "heighten+1", "persist").capitalize())
+						footer += "{{Heightened&#8203;=+%s} %s}}" % (heightenMacro, getWord(words, "heighten+1", "persist").capitalize())
 					else:
 						footer += "{{Heightened=[[%s}]] %s}}" % (heightenMacro, getWord(words, "heighten+1").capitalize())
 				elif ("heighten+2" in words): # Oh man this is so bad haha
@@ -247,7 +247,7 @@ for infile in infiles:
 						times += 1
 
 					if ("persist" in words):
-						footer += "{{Hgt Persist=+%s} %s}}" % (heightenMacro, getWord(words, "heighten+2", "persist").capitalize())
+						footer += "{{Heightened&#8203;=+%s} %s}}" % (heightenMacro, getWord(words, "heighten+2", "persist").capitalize())
 					else:
 						footer += "{{Heightened=[[%s}]] %s}}" % (heightenMacro, getWord(words, "heighten+2").capitalize())
 				elif ("persist" in words): # Sorry
