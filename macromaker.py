@@ -112,6 +112,8 @@ for infile in infiles:
 			deadly = ""
 			hasTitle = False
 			damageLabel = "damage"
+			blanks = ""
+			bullets = "&bull;"
 
 			for line in lines:
 				if (line == ""):
@@ -148,13 +150,14 @@ for infile in infiles:
 					hasTitle = True
 					continue
 
-				if (linedata.startswith("*")):
-					bullets = ""
-					for char in linedata:
-						if (char == '*'):
-							bullets += "&bull;"
+				if (".jpg" in linedata):
+					macro += "{{%s=[x](%s)}}" % (blanks, linedata)
+					blanks += "&#8203;"
+					continue;
 
+				if (linedata.startswith("*")):
 					footer += "{{%s=*%s*}} " % (bullets, linedata.strip("*").strip())
+					bullets += "&#8203;"
 					continue
 
 				if (":" in linedata):

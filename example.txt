@@ -78,9 +78,15 @@ roll: d20+4
 damage: 4d4
 test: d100
 * A note about this macro
-** Another note here
-*** More notes
-**** See where this is going?
+* Another note here
+* More notes
+* See where this is going?
+
+> Image
+https://i.imgur.com/sfR6ssw.jpg
+https://i.imgur.com/sfR6ssw.jpg
+https://i.imgur.com/sfR6ssw.jpg
+roll: d20+10
 
 # Each macro generates a prompt for any bonuses
 # If you with to disable this, put this at the
