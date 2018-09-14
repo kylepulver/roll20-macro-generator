@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2018-09-14 02:30:15.668099
+# Generating macros from example.txt 2018-09-14 02:35:08.641856
 
 # SCIMITAR
 &{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d8+2+?{S Bonus|0}]] S}} {{critical=[[1d8+2+?{S Bonus|0}]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -25,10 +25,10 @@
 &{template:default} {{name=&#9658; **Acid Arrow**}} {{ranged=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] Touch}} {{range=120ft}} {{damage=[[1d8+4+?{Acid Bonus|0}]] Acid}} {{critical=[[1d8+4+?{Acid Bonus|0}]] Acid}} {{Persist=**1d6** Acid}} {{Heightened=[[?{Heighten|0,|2 (+1d8),1d8|4 (+2d8),2d8|6 (+3d8),3d8|8 (+4d8),4d8|10 (+5d8),5d8}]] }}{{Hgt Persist=+?{Hgt Persist|0,|2 (+1d6),**1d6**|4 (+2d6),**2d6**|6 (+3d6),**3d6**|8 (+4d6),**4d6**|10 (+5d6),**5d6**} Acid}}
 
 # SKILLS
-&{template:default} {{name=&#9658; **Skills**}} {{Check=[[d20+?{Skill|Perception (+3),+3|Athletics (+2),+2|Acrobatics (+4),+4|Arcana (-4),-4|Lore_desert (),|Other (+1),+1}+?{Skill Bonus|0}]]}}
+&{template:default} {{name=&#9658; **Skills**}} {{Check=[[d20+?{Skill|Perception (+3),+3|Athletics (+2),+2|Acrobatics (+4),+4|Arcana (-4),-4|Lore_desert (+2),+2|Other (+1),+1}+?{Skill Bonus|0}]]}}
 
 # INITATIVE
-&{template:default} {{name=Initiative}} {{Initative=[[d20+?{Skill|Perception (+3),+3|Athletics (+2),+2|Acrobatics (+4),+4|Arcana (-4),-4|Lore_desert (),|Other (+1),+1}+?{Skill Bonus|0} &{tracker}]]}}
+&{template:default} {{name=Initiative}} {{Initative=[[d20+?{Skill|Perception (+3),+3|Athletics (+2),+2|Acrobatics (+4),+4|Arcana (-4),-4|Lore_desert (+2),+2|Other (+1),+1}+?{Skill Bonus|0} &{tracker}]]}}
 
 # ABILITY
 &{template:default} {{name=&#9658; **Ability**}} {{Ability Check=[[d20+?{Ability|Str (+4),+4|Dex (+2),+2|Con (+0),+0|Int (-2),-2|Wis (+1),+1|Cha (-1),-1}+?{Ability Bonus|0}]]}}

@@ -63,7 +63,7 @@ perception +3
 athletics +2
 acrobatics +4
 arcana -4
-lore_desert # sorry, no spaces for now!
+lore_desert +2 # sorry, no spaces for now!
 other +1
 
 > ability # special spot for ability checks!
