@@ -150,7 +150,7 @@ for infile in infiles:
 					hasTitle = True
 					continue
 
-				if (".jpg" in linedata):
+				if (".jpg" in linedata or ".png" in linedata or ".gif" in linedata):
 					macro += "{{%s=[x](%s)}}" % (blanks, linedata)
 					blanks += "&#8203;"
 					continue;

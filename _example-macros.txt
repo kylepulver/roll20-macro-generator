@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2018-09-14 14:25:29.714642
+# Generating macros from example.txt 2018-09-14 14:36:29.634388
 
 # SCIMITAR
 &{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d8+2+?{S Bonus|0}]] S}} {{critical=[[1d8+2+?{S Bonus|0}]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -40,4 +40,4 @@
 &{template:default} {{name=&#9658; **Freeform Macro**}} {{Label=Value}}{{Roll=[[d20+4]]}}{{Damage=[[4d4]]}}{{Test=[[d100]]}}{{&bull;=*A note about this macro*}} {{&bull;&#8203;=*Another note here*}} {{&bull;&#8203;&#8203;=*More notes*}} {{&bull;&#8203;&#8203;&#8203;=*See where this is going?*}}
 
 # IMAGE
-&{template:default} {{name=&#9658; **Image**}} {{=[x](https://i.imgur.com/sfR6ssw.jpg)}}{{&#8203;=[x](https://i.imgur.com/sfR6ssw.jpg)}}{{&#8203;&#8203;=[x](https://i.imgur.com/sfR6ssw.jpg)}}{{Roll=[[d20+10]]}}
+&{template:default} {{name=&#9658; **Image**}} {{=[x](https://i.imgur.com/Q0y8EcX.jpg)}}{{&#8203;=[x](https://i.imgur.com/3OUxNg9.png)}}{{&#8203;&#8203;=[x](https://i.imgur.com/NYffg7C.gif)}}{{Roll=[[d20+10]]}}{{&bull;=*Testing images!*}}

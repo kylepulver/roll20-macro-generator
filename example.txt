@@ -83,10 +83,11 @@ test: d100
 * See where this is going?
 
 > Image
-https://i.imgur.com/sfR6ssw.jpg
-https://i.imgur.com/sfR6ssw.jpg
-https://i.imgur.com/sfR6ssw.jpg
+https://i.imgur.com/Q0y8EcX.jpg # Image url must have .jpg
+https://i.imgur.com/3OUxNg9.png # or png
+https://i.imgur.com/NYffg7C.gif # or gif
 roll: d20+10
+* Testing images!
 
 # Each macro generates a prompt for any bonuses
 # If you with to disable this, put this at the
