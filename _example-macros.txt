@@ -1,0 +1,40 @@
+# Generating macros from example.txt 2018-09-14 02:30:15.668099
+
+# SCIMITAR
+&{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d8+2+?{S Bonus|0}]] S}} {{critical=[[1d8+2+?{S Bonus|0}]] S}} {{&bull;=*Forceful, Sweep*}}
+
+# CLAW
+&{template:default} {{name=&#9658; **Claw**}} {{melee=[[d20+3[Hit]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d6+1+?{S Bonus|0}]] S}} {{critical=[[1d6+1+?{S Bonus|0}]] S}} {{&bull;=*Agile*}}
+
+# SHORTBOW
+&{template:default} {{name=&#9658; **Shortbow**}} {{ranged=[[d20+5[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d6+?{P Bonus|0}]] P}} {{critical=[[1d6+?{P Bonus|0}]] P [[2d10]] Deadly}} {{&bull;=*Deadly*}}
+
+# DAGGER
+&{template:default} {{name=&#9658; **Dagger**}} {{melee=[[d20+4[Hit]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d4+?{P/S Bonus|0}]] P/S}} {{critical=[[1d4+?{P/S Bonus|0}]] P/S}} {{Sneak Attack=[[2d6]]}}
+
+# PACK ATTACK
+&{template:default} {{name=&#9658; **Pack Attack**}} {{melee=[[d20+2[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d6+2+?{P Bonus|0}]] P [[1d4+?{P Bonus|0}]] P}} {{critical=[[1d6+2+?{P Bonus|0}]] P [[1d4+?{P Bonus|0}]] P}} {{Extra Damage=[[1d4]] p}} {{&bull;=*Extra damage if target in reach of two allies*}}
+
+# BURNING HANDS
+&{template:default} {{name=&#9658; **Burning Hands**}} {{damage=[[2d6+?{Fire Bonus|0}]] Fire}} {{Save=Reflex 15}} {{&bull;=*Basic Save*}}
+
+# HEAL (2 ACTION)
+&{template:default} {{name=&#9658; **Heal (2 Action)**}} {{ranged=[[d20+5[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] Touch}} {{range=30ft}} {{Healing=[[2d8+4+?{Healing Bonus|0}]] Healing}} {{Heightened=[[?{Heighten|0,|1 (+2d8),2d8|2 (+4d8),4d8|3 (+6d8),6d8|4 (+8d8),8d8|5 (+10d8),10d8|6 (+12d8),12d8|7 (+14d8),14d8|8 (+16d8),16d8|9 (+18d8),18d8|10 (+20d8),20d8}]] }}
+
+# ACID ARROW
+&{template:default} {{name=&#9658; **Acid Arrow**}} {{ranged=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] Touch}} {{range=120ft}} {{damage=[[1d8+4+?{Acid Bonus|0}]] Acid}} {{critical=[[1d8+4+?{Acid Bonus|0}]] Acid}} {{Persist=**1d6** Acid}} {{Heightened=[[?{Heighten|0,|2 (+1d8),1d8|4 (+2d8),2d8|6 (+3d8),3d8|8 (+4d8),4d8|10 (+5d8),5d8}]] }}{{Hgt Persist=+?{Hgt Persist|0,|2 (+1d6),**1d6**|4 (+2d6),**2d6**|6 (+3d6),**3d6**|8 (+4d6),**4d6**|10 (+5d6),**5d6**} Acid}}
+
+# SKILLS
+&{template:default} {{name=&#9658; **Skills**}} {{Check=[[d20+?{Skill|Perception (+3),+3|Athletics (+2),+2|Acrobatics (+4),+4|Arcana (-4),-4|Lore_desert (),|Other (+1),+1}+?{Skill Bonus|0}]]}}
+
+# INITATIVE
+&{template:default} {{name=Initiative}} {{Initative=[[d20+?{Skill|Perception (+3),+3|Athletics (+2),+2|Acrobatics (+4),+4|Arcana (-4),-4|Lore_desert (),|Other (+1),+1}+?{Skill Bonus|0} &{tracker}]]}}
+
+# ABILITY
+&{template:default} {{name=&#9658; **Ability**}} {{Ability Check=[[d20+?{Ability|Str (+4),+4|Dex (+2),+2|Con (+0),+0|Int (-2),-2|Wis (+1),+1|Cha (-1),-1}+?{Ability Bonus|0}]]}}
+
+# SAVES
+&{template:default} {{name=&#9658; **Saves**}} {{Save=[[d20+?{Save|Fort (+1),+1|Ref (+4),+4|Will (+2),+2}+?{Save Bonus|0}]]}}
+
+# FREEFORM MACRO
+&{template:default} {{name=&#9658; **Freeform Macro**}} {{Label=Value}}{{Roll=[[d20+4]]}}{{Damage=[[4d4]]}}{{Test=[[d100]]}}{{&bull;=*A note about this macro*}} {{&bull;&bull;=*Another note here*}} {{&bull;&bull;&bull;=*More notes*}} {{&bull;&bull;&bull;&bull;=*See where this is going?*}}

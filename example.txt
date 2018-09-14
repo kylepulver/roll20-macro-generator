@@ -1,0 +1,146 @@
+# This file will be parsed into macros that can be used
+# on roll20! This is designed for the Pathfinder Playtest
+# and has features built for that system.
+# 
+# As you can see, lines that start with # are comments
+# You can also use # as an inline comment!
+#
+# Here's an example file. After running the script,
+# check the directory for a new file named:
+# _example-macros.txt
+#
+# Note that running the script will parse all txt files
+# it can find in its directory!
+
+> Scimitar # Start a macro with > followed by the title
+melee +4 # Make a d20 melee strike with +4
+1d8+2 s # Deal 1d8+2 slashing damage
+* Forceful, Sweep # Note the properties
+
+> Claw
+melee +3 agile # Agile will change the MAP options
+1d6+1 s
+* Agile # Just a note
+
+> Shortbow
+ranged +5 # Make a d20 ranged strike with +5
+1d6 p
+2d10 deadly # Add deadly damage to the crit
+* Deadly
+
+> Dagger
+melee +4 agile
+1d4 p/s
+2d6 sneak # Use 'sneak' for sneak attack
+
+> Pack Attack
+melee +2
+1d6+2 p
+1d4 extra p
+* Extra damage if target in reach of two allies
+
+> Burning Hands # What about spells?!
+2d6 fire
+reflex save 15
+* Basic Save
+
+> Heal (2 Action) # A more complex spell
+ranged +5 touch # Adding touch for touch attack
+range 30ft
+2d8+4 healing
+heighten+1 2d8 # specify heighten without spaces
+
+> Acid Arrow # More complex spell
+ranged +4 touch
+range 120ft
+1d8+4 acid
+1d6 acid persist # label for persistent damage
+heighten+2 1d8
+heighten+2 1d6 acid persist
+
+> skills # Special spot for skills!
+perception +3
+athletics +2
+acrobatics +4
+arcana -4
+lore_desert # sorry, no spaces for now!
+other +1
+
+> ability # special spot for ability checks!
+4 2 0 -2 1 -1 # str dex con int wis cha
+
+> saves
+1 4 2 # fort ref will
+
+> Freeform Macro
+label: value
+roll: d20+4
+damage: 4d4
+test: d100
+* A note about this macro
+** Another note here
+*** More notes
+**** See where this is going?
+
+# Each macro generates a prompt for any bonuses
+# If you with to disable this, put this at the
+# start of the file:
+config: prompts = off
+# This will not disable MAP or Heightened prompts
+#
+# Starting a macro with the words:
+# * skills
+# * ability
+# * saves
+# Will perform a special action, so don't name other
+# macros those words!
+#
+# When you run the python script, it will read all
+# text files in its directory, and output new files
+# with the roll20 macros in them.
+#
+# Don't use the > character in places other than the
+# start of a new macro.
+#
+# When making a strike attack macro used the words
+# * melee
+# * ranged
+#
+# For damage use any of the following words
+# * p
+# * piercing
+# * s
+# * slashing
+# * p/s
+# * b
+# * bludgeoning
+# * acid
+# * cold
+# * electricity
+# * elec
+# * fire
+# * sonic
+# * force
+# * precision
+# * neg
+# * negative
+# * pos
+# * positive
+# * mental
+# * chaotic
+# * lawful
+# * good
+# * evil
+#
+# To change "damage" into "healing" use the words:
+# * pos
+# * positive
+# * heal
+# * healing
+#
+# For heightening spells, use the words:
+# * heighten+1
+# * heighten+2
+# Do not put spaces between heighten and the +1 or +2
+# If there is also persistent damage from heightening
+# include that in a new line with the word persist.

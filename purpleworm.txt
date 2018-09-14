@@ -1,0 +1,66 @@
+> Jaws
+melee +25
+deadly 2d12
+p 3d12+14
+* Grab
+
+> Stinger (Agile)
+melee +25 agile
+3d8+14 p
+save fort 30
+* Purple Worm Venom
+
+> Body
+melee +24
+3d8+14 b
+
+> Regurgitate # Regurgitate has multiple damage cases
+ranged +21
+huge: 4d8+14 b
+large: 3d8+14 b
+medium: 2d8+14 b
+small: 2d6+14 b
+tiny: 1d6+14 b
+
+> Regurgitate Huge # Can also make one for each case
+ranged +21
+4d8+14 b
+
+> Regurgitate Large
+ranged +21
+3d8+14 b
+
+> Regurgitate Meduim
+ranged +21
+2d8+14 b
+
+> Regurgitate Small
+ranged +21
+2d6+14 b
+
+> Regurgitate Tiny
+ranged +21
+1d6+14 b
+
+> Swallow Whole
+b 2d10+7
+* Toughness 24
+
+> skills
+perception +19
+acrobatics +20
+athletics +28
+other +16
+
+> ability
+str +10
+dex -2
+con +7
+int -5
+wis +0
+cha -3
+
+> saves
+fort +26
+ref +16
+will +18
