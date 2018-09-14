@@ -102,9 +102,12 @@ config: prompts = off
 # Don't use the > character in places other than the
 # start of a new macro.
 #
-# When making a strike attack macro used the words
+# For a strike use any of the following words
 # * melee
 # * ranged
+# This will generate a macro that has a d20 roll for
+# the attack, and will also include any damage listed
+# as both damage, and critical hit damage.
 #
 # For damage use any of the following words
 # * p
