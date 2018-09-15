@@ -94,7 +94,8 @@ for infile in infiles:
 		conents = contents[firstMacro:]
 
 		data = conents.split("\n>")
-		macro = "# Generating macros from %s %s\n\n" % (file.name, datetime.datetime.now())
+		macro = "# Generating macros from %s %s.\n\n" % (file.name, datetime.datetime.now())
+		macroCount = 0;
 
 		for d in data:
 			lines = d.strip(">").split("\n")
@@ -330,10 +331,15 @@ for infile in infiles:
 			macro += footer.strip()
 			macro = macro.strip() + "\n\n"
 
+			macroCount += 1
+
 			# Repeat Skills to generate Initiative macro
 			if (isSkill):
-				macro += "# INITATIVE\n&{template:default} {{name=Initiative}} "
+				macro += "# INITIATIVE\n&{template:default} {{name=Initiative}} "
 				macro += "{{Initative=[[d20+%s}+%s &{tracker}]]}}\n\n" % (skills, generatePrompt("?{Skill Bonus|0}"))
+				macroCount += 1
+
+		macro += "# %s Macros generated." % (macroCount)
 
 		outfile = open("_%s-macros.txt" % (infile.split(".")[0]), "w")
 		outfile.write(macro.strip())
