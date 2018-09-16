@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2018-09-15 19:44:43.001945.
+# Generating macros from example.txt 2018-09-15 19:57:12.275801.
 
 SCIMITAR
 &{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d8+2+?{S Bonus|0}]] S}} {{critical=[[1d8+2+?{S Bonus|0}]] S}} {{&bull;=*Forceful, Sweep*}}

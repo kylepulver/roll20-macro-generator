@@ -1,3 +1,5 @@
+config: name = Purple Worm
+
 > Jaws
 melee +25
 deadly 2d12

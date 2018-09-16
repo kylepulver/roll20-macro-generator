@@ -94,6 +94,7 @@ for infile in infiles:
 		configPrompts = True
 		configImage = ""
 		configTitles = True
+		configName = ""
 
 		contents = "\n%s" % (file.read())
 
@@ -147,6 +148,8 @@ for infile in infiles:
 							configTitles = False
 						if (setting == "on"):
 							configTitles = True
+					if (command == "name"):
+						configName = "%s " % (setting)
 					continue
 
 				if (linedata.startswith("*")):
@@ -163,7 +166,7 @@ for infile in infiles:
 
 					if (configTitles):
 						stripUrl = re.sub(r'http\S+', '', linedata).strip()
-						title += "&#9658; **%s**" % (string.capwords(stripUrl))
+						title += "%s&#9658; **%s**" % (configName, string.capwords(stripUrl))
 
 					titleCode = linedata.upper().strip()
 
