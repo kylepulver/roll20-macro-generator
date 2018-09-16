@@ -318,10 +318,10 @@ for infile in infiles:
 					macro += "{{critical=%s%s}} " % (damage.strip(), deadly)
 			
 			if (isSkill):
-				macro += "{{Check=[[d20+%s}+%s]]}} " % (skills, generatePrompt("?{Skill Bonus|0}"))
+				macro += "{{?{Skill Name|}=[[d20+%s}+%s]]}} " % (skills, generatePrompt("?{Skill Bonus|0}"))
 
 			if (isAbility):
-				macro += "{{Ability Check=[[d20+%s}+%s]]}} " % (skills, generatePrompt("?{Ability Bonus|0}"))
+				macro += "{{Ability Check ?{Ability Name|Str|Dex|Con|Int|Wis|Cha}=[[d20+%s}+%s]]}} " % (skills, generatePrompt("?{Ability Bonus|0}"))
 
 			if (isSave):
 				macro += "{{Save=[[d20+%s}+%s]]}} " % (skills, generatePrompt("?{Save Bonus|0}"))
