@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2018-09-15 19:57:12.275801.
+# Generating macros from example.txt 2018-09-15 20:05:43.569045.
 
 SCIMITAR
 &{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d8+2+?{S Bonus|0}]] S}} {{critical=[[1d8+2+?{S Bonus|0}]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -13,7 +13,7 @@ DAGGER
 &{template:default} {{name=&#9658; **Dagger**}} {{melee=[[d20+4[Hit]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d4+?{P/S Bonus|0}]] P/S}} {{critical=[[1d4+?{P/S Bonus|0}]] P/S}} {{Sneak Attack=[[2d6]]}}
 
 PACK ATTACK
-&{template:default} {{name=&#9658; **Pack Attack**}} {{melee=[[d20+2[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d6+2+?{P Bonus|0}]] P [[1d4+?{P Bonus|0}]] P}} {{critical=[[1d6+2+?{P Bonus|0}]] P [[1d4+?{P Bonus|0}]] P}} {{Extra Damage=[[1d4]] p}} {{&bull;=*Extra damage if target in reach of two allies*}}
+&{template:default} {{name=&#9658; **Pack Attack**}} {{melee=[[d20+2[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d6+2+?{P Bonus|0}]] P}} {{critical=[[1d6+2+?{P Bonus|0}]] P}} {{Extra Damage=[[1d4]] P}} {{&bull;=*Extra damage if target in reach of two allies*}}
 
 BURNING HANDS
 &{template:default} {{name=&#9658; **Burning Hands**}} {{damage=[[2d6+?{Fire Bonus|0}]] Fire}} {{Save=Reflex 15}} {{&bull;=*Basic Save*}}

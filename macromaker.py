@@ -225,9 +225,6 @@ for infile in infiles:
 				if ("sneak" in words):
 					footer += "{{Sneak Attack=[[%s]]}} " % (getNumber(words))
 
-				if ("extra" in words):
-					footer += "{{Extra Damage=[[%s]] %s}} " % (getNumber(words), getWord(words, "extra"))
-
 				if ("save" in words):
 					footer += "{{Save=%s %s}} " % (getWord(words, "save").capitalize(), getNumber(words).strip("+"))
 
@@ -282,6 +279,8 @@ for infile in infiles:
 						footer += "{{Heightened=[[%s}]] %s}}" % (heightenMacro, getWord(words, "heighten+2").capitalize())
 				elif ("persist" in words): # Sorry
 					footer += "{{Persist=**%s** %s}} " % (getNumber(words), parseDamageType(getWord(words, "persist")))
+				elif ("extra" in words):
+					footer += "{{Extra Damage=[[%s]] %s}} " % (getNumber(words), parseDamageType(getWord(words, "extra")))
 				else: # But it works!
 					intersect = set(keywordsDamage).intersection(set(words))
 
