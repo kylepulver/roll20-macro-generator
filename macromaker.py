@@ -303,8 +303,8 @@ for infile in infiles:
 						skillNameLabel = "?{Skill Name&#124;Other&#125;"
 
 					# Use &#125; instead of } when doing this for reasons, but only sometimes use &#125;
-					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("?{" + skillNameLabel + " Bonus&#124;0&#125;"))
-					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("?{Initiative Bonus&#124;0&#125;"))
+					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("?{" + skillName + " Bonus&#124;0&#125;"))
+					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillName, getNumber(words), generatePrompt("?{Initiative Bonus&#124;0&#125;"))
 
 				if (titleCode == "ABILITY"):
 					isAbility = True
