@@ -162,19 +162,21 @@ for infile in infiles:
 						title += "[Header](%s)&#13;" % (imageUrl)
 
 					if (configTitles):
-						stripUrl = re.sub(r'http\S+', '', linedata)
+						stripUrl = re.sub(r'http\S+', '', linedata).strip()
 						title += "&#9658; **%s**" % (string.capwords(stripUrl))
+
+					titleCode = linedata.upper().strip()
 
 					macro += "%s\n&{template:default} {{name=%s%s}} " % (stripUrl.upper(), configImage, title)
 
-					if (title == "SKILLS"):
+					if (titleCode == "SKILLS"):
 						skills = "?{Skill"
 						inits = "?{Initiative"
 
-					if (title == "ABILITY"):
+					if (titleCode == "ABILITY"):
 						skills = "?{Ability"
 
-					if (title == "SAVES"):
+					if (titleCode == "SAVES"):
 						skills = "?{Save"
 
 					hasTitle = True
@@ -289,7 +291,7 @@ for infile in infiles:
 							canCrit = False
 
 
-				if (title == "SKILLS"):
+				if (titleCode == "SKILLS"):
 					isSkill = True
 					isDamage = False
 
@@ -304,7 +306,7 @@ for infile in infiles:
 					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("?{" + skillNameLabel + " Bonus&#124;0&#125;"))
 					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("?{Initiative Bonus&#124;0&#125;"))
 
-				if (title == "ABILITY"):
+				if (titleCode == "ABILITY"):
 					isAbility = True
 					isDamage = False
 
@@ -324,7 +326,7 @@ for infile in infiles:
 
 					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("?{" + label + " Bonus&#124;0&#125;"))
 					
-				if (title == "SAVES"):
+				if (titleCode == "SAVES"):
 					isSave = True
 					isDamage = False
 

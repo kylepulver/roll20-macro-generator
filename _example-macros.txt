@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2018-09-15 19:37:42.217878.
+# Generating macros from example.txt 2018-09-15 19:41:53.995278.
 
 SCIMITAR
 &{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] }} {{damage=[[1d8+2+?{S Bonus|0}]] S}} {{critical=[[1d8+2+?{S Bonus|0}]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -25,13 +25,16 @@ ACID ARROW
 &{template:default} {{name=&#9658; **Acid Arrow**}} {{ranged=[[d20+4[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[Bonus]]] Touch}} {{range=120ft}} {{damage=[[1d8+4+?{Acid Bonus|0}]] Acid}} {{critical=[[1d8+4+?{Acid Bonus|0}]] Acid}} {{Persist=**1d6** Acid}} {{Heightened=[[?{Heighten|0,|2 (+1d8),1d8|4 (+2d8),2d8|6 (+3d8),3d8|8 (+4d8),4d8|10 (+5d8),5d8}]] }}{{Heightened&#8203;=+?{Hgt Persist|0,|2 (+1d6),**1d6**|4 (+2d6),**2d6**|6 (+3d6),**3d6**|8 (+4d6),**4d6**|10 (+5d6),**5d6**} Acid}}
 
 SKILLS
-&{template:default} {{name=&#9658; **Skills**}}
+&{template:default} {{name=&#9658; **Skills**}} ?{Skill|Perception (+3),{{Perception=[[d20+3+?{Perception Bonus&#124;0&#125;]]&#125;&#125;|Athletics (+2),{{Athletics=[[d20+2+?{Athletics Bonus&#124;0&#125;]]&#125;&#125;|Acrobatics (+4),{{Acrobatics=[[d20+4+?{Acrobatics Bonus&#124;0&#125;]]&#125;&#125;|Arcana (-4),{{Arcana=[[d20-4+?{Arcana Bonus&#124;0&#125;]]&#125;&#125;|Lore Desert (+2),{{Lore Desert=[[d20+2+?{Lore Desert Bonus&#124;0&#125;]]&#125;&#125;|Other (+1),{{?{Skill Name&#124;Other&#125;=[[d20+1+?{?{Skill Name&#124;Other&#125; Bonus&#124;0&#125;]]&#125;&#125;}
+
+INITIATIVE
+&{template:default} {{name=Initiative}} ?{Initiative|Perception (+3),{{Perception=[[d20+3+?{Initiative Bonus&#124;0&#125; &{tracker&#125;]]&#125;&#125;|Athletics (+2),{{Athletics=[[d20+2+?{Initiative Bonus&#124;0&#125; &{tracker&#125;]]&#125;&#125;|Acrobatics (+4),{{Acrobatics=[[d20+4+?{Initiative Bonus&#124;0&#125; &{tracker&#125;]]&#125;&#125;|Arcana (-4),{{Arcana=[[d20-4+?{Initiative Bonus&#124;0&#125; &{tracker&#125;]]&#125;&#125;|Lore Desert (+2),{{Lore Desert=[[d20+2+?{Initiative Bonus&#124;0&#125; &{tracker&#125;]]&#125;&#125;|Other (+1),{{?{Skill Name&#124;Other&#125;=[[d20+1+?{Initiative Bonus&#124;0&#125; &{tracker&#125;]]&#125;&#125;}
 
 ABILITY
-&{template:default} {{name=&#9658; **Ability**}}
+&{template:default} {{name=&#9658; **Ability**}} ?{Ability|Strength (+4),{{Strength=[[d20+4+?{Strength Bonus&#124;0&#125;]]&#125;&#125;|Dexterity (+2),{{Dexterity=[[d20+2+?{Dexterity Bonus&#124;0&#125;]]&#125;&#125;|Constitution (+0),{{Constitution=[[d20+0+?{Constitution Bonus&#124;0&#125;]]&#125;&#125;|Intelligence (-2),{{Intelligence=[[d20-2+?{Intelligence Bonus&#124;0&#125;]]&#125;&#125;|Wisdom (+1),{{Wisdom=[[d20+1+?{Wisdom Bonus&#124;0&#125;]]&#125;&#125;|Charisma (-1),{{Charisma=[[d20-1+?{Charisma Bonus&#124;0&#125;]]&#125;&#125;}
 
 SAVES
-&{template:default} {{name=&#9658; **Saves**}}
+&{template:default} {{name=&#9658; **Saves**}} ?{Save|Fortitude (+1),{{Fortitude=[[d20+1+?{Fortitude Bonus&#124;0&#125;]]&#125;&#125;|Reflex (+4),{{Reflex=[[d20+4+?{Reflex Bonus&#124;0&#125;]]&#125;&#125;|Will (+2),{{Will=[[d20+2+?{Will Bonus&#124;0&#125;]]&#125;&#125;}
 
 FREEFORM MACRO
 &{template:default} {{name=&#9658; **Freeform Macro**}} {{Label=Value}}{{Roll=[[d20+4]]}}{{Damage=[[4d4]]}}{{Test=[[d100]]}}{{&bull;=*A note about this macro*}} {{&bull;&#8203;=*Another note here*}} {{&bull;&#8203;&#8203;=*More notes*}} {{&bull;&#8203;&#8203;&#8203;=*See where this is going?*}}
@@ -39,4 +42,4 @@ FREEFORM MACRO
 IMAGE
 &{template:default} {{name=&#9658; **Image**}} {{=[x](https://i.imgur.com/Q0y8EcX.jpg)}}{{&#8203;=[x](https://i.imgur.com/3OUxNg9.png)}}{{&#8203;&#8203;=[x](https://i.imgur.com/NYffg7C.gif)}}{{Roll=[[d20+10]]}}{{&bull;=*Testing images!*}}
 
-# 14 Macros generated.
+# 15 Macros generated.
