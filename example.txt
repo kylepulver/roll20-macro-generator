@@ -22,6 +22,11 @@ melee +3 agile # Agile will change the MAP options
 1d6+1 s
 * Agile # Just a note
 
+> Longsword
+? Note inside prompt
+melee +4
+1d8+2 s
+
 > Shortbow
 ranged +5 # Make a d20 ranged strike with +5
 1d6 p

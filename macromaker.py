@@ -57,9 +57,17 @@ def increaseDie(data, amount = 1):
 	numDice *= amount
 	return "%sd%s" % (numDice, split[1])
 
-def generatePrompt(data):
+def generatePrompt(defaultName, value, inside = False):
+	if (promptInfo == ""):
+		n = defaultName
+	else:
+		n = "%s (%s)" % (defaultName, promptInfo);
+
 	if (configPrompts):
-		return data
+		if (inside):
+			return "?{%s&#124;%s&#125;[%s]" % (n, str(value), defaultName.upper())
+		else:
+			return "?{%s|%s}[%s]" % (n, str(value), defaultName.upper())
 	return "0"
 
 def wrapDice(data):
@@ -74,7 +82,7 @@ else:
 	indir = os.path.dirname(os.path.realpath(__file__))
 	infiles = os.listdir(indir)
 
-keywordsDamage = ["p", "s", "p/s", "b", "bludgeoning", "piercing", "slashing", "acid", "cold", "electricity", "elec", "fire", "sonic", "force", "precision", "negative", "positive", "pos", "neg", "mental", "chaotic", "evil", "good", "lawful", "heal", "healing"]
+keywordsDamage = ["p", "s", "p/s", "b", "bludgeoning", "piercing", "slashing", "acid", "cold", "electricity", "elec", "fire", "sonic", "force", "precision", "negative", "positive", "pos", "neg", "mental", "chaotic", "evil", "good", "lawful", "heal", "healing", "poison"]
 keywordsAttack = ["melee", "ranged"]
 keywordsHealing = ["pos", "positive", "healing", "heal"]
 
@@ -83,7 +91,6 @@ saveFullTypes = ["fortitude", "reflex", "will"]
 abilityTypes = ["str", "dex", "con", "int", "wis", "cha"]
 abilityFullTypes = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
 skillTypes = ["perception", "acrobatics", "arcana", "athletics", "crafting", "deception", "diplomacy", "intimidation", "medicine", "nature", "occultism", "performance", "religion", "society", "stealth", "survival", "thievery"]
-
 
 for infile in infiles:
 	if ("-macros" in infile):
@@ -121,6 +128,7 @@ for infile in infiles:
 			damageLabel = "damage"
 			blanks = ""
 			bullets = "&bull;"
+			promptInfo = ""
 
 			for line in lines:
 				if (line == ""):
@@ -190,6 +198,9 @@ for infile in infiles:
 					blanks += "&#8203;"
 					continue;
 
+				if (linedata.startswith("?")):
+					promptInfo = linedata.split(" ", 1)[1].strip()
+
 				if (":" in linedata):
 					split = linedata.split(":")
 					words = split[1].split(" ")
@@ -217,7 +228,7 @@ for infile in infiles:
 
 					hitBonus = getNumber(words)
 
-					macro += "{{%s=[[d20%s[Hit]+%s+%s]] %s}} " % (attackType, hitBonus, mapenalty, generatePrompt("?{Hit Bonus|0}[Bonus]"), info.strip())
+					macro += "{{%s=[[d20%s[Hit]+%s+%s]] %s}} " % (attackType, hitBonus, mapenalty, generatePrompt("Hit Bonus", 0), info.strip())
 
 				if ("range" in words):
 					macro += "{{range=%s}} " % (string.capwords(line.split(" ", 1)[1]))
@@ -286,12 +297,11 @@ for infile in infiles:
 
 					if (len(intersect) > 0):
 						damageType = parseDamageType(intersect.pop())
-						damagePrompt = generatePrompt("?{%s Bonus|0}" % (damageType))
+						damagePrompt = generatePrompt("%s Bonus" % (damageType), 0)
 						damage += "[[%s+%s]] %s " % (getNumber(words), damagePrompt, damageType)
 						if (damageType.lower() in keywordsHealing):
 							damageLabel = "Healing"
 							canCrit = False
-
 
 				if (titleCode == "SKILLS"):
 					isSkill = True
@@ -305,8 +315,8 @@ for infile in infiles:
 						skillNameLabel = "?{Skill Name&#124;Other&#125;"
 
 					# Use &#125; instead of } when doing this for reasons, but only sometimes use &#125;
-					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("?{" + skillName + " Bonus&#124;0&#125;"))
-					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillName, getNumber(words), generatePrompt("?{Initiative Bonus&#124;0&#125;"))
+					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("%s Bonus" % (skillName), 0, True))
+					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillName, getNumber(words), generatePrompt("Initiative Bonus", 0, True))
 
 				if (titleCode == "ABILITY"):
 					isAbility = True
@@ -318,7 +328,7 @@ for infile in infiles:
 
 						for score in scores:
 							label = abilityFullTypes[parseIndex].capitalize();
-							skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("?{" + label + " Bonus&#124;0&#125;"))
+							skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
 							parseIndex += 1
 						continue
 
@@ -326,7 +336,7 @@ for infile in infiles:
 					if (label == ""):
 						label = abilityFullTypes[parseIndex].capitalize()
 
-					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("?{" + label + " Bonus&#124;0&#125;"))
+					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("%s Bonus" % (label), 0, True))
 					
 				if (titleCode == "SAVES"):
 					isSave = True
@@ -338,7 +348,7 @@ for infile in infiles:
 
 						for score in scores:
 							label = saveFullTypes[parseIndex].capitalize();
-							skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("?{" + label + " Bonus&#124;0&#125;"))
+							skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
 							parseIndex += 1
 						continue
 
@@ -346,7 +356,7 @@ for infile in infiles:
 					if (label == ""):
 						label = saveFullTypes[parseIndex].capitalize()
 
-					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("?{" + label + " Bonus&#124;0&#125;"))
+					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("%s Bonus" % (label), 0, True))
 
 			if (isDamage):
 				if (damage.strip() != ""):
