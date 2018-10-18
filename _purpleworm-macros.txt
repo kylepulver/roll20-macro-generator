@@ -1,31 +1,31 @@
-# Generating macros from purpleworm.txt 2018-09-18 01:05:44.231629.
+# Generating macros from purpleworm.txt 2018-10-17 18:57:04.062879.
 
 JAWS
-&{template:default} {{name=Purple Worm &#9658; **Jaws**}} {{melee=[[d20+25[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d12+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d12+14+?{P Bonus|0}[P BONUS]]] P [[2d12]] Deadly}} {{&bull;=*Grab*}}
+&{template:default} {{name=Purple Worm &#9658; **Jaws**}} {{melee=[[d20+25[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d12+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d12+14+?{P Bonus|0}[P BONUS]]] P [[2d12]] Deadly}} {{&bull;=*Grab*}}
 
 STINGER (AGILE)
-&{template:default} {{name=Purple Worm &#9658; **Stinger (agile)**}} {{melee=[[d20+25[Hit]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{Save=Fort 30}} {{&bull;=*Purple Worm Venom*}}
+&{template:default} {{name=Purple Worm &#9658; **Stinger (agile)**}} {{melee=[[d20+25[HIT]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{Save=Fort 30}} {{&bull;=*Purple Worm Venom*}}
 
 BODY
-&{template:default} {{name=Purple Worm &#9658; **Body**}} {{melee=[[d20+24[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Body**}} {{melee=[[d20+24[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate**}} {{ranged=[[d20+21[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{Huge=[[4d8+14]] B}}{{Large=[[3d8+14]] B}}{{Medium=[[2d8+14]] B}}{{Small=[[2d6+14]] B}}{{Tiny=[[1d6+14]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Regurgitate**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{Huge=[[4d8+14]] b}}{{Large=[[3d8+14]] b}}{{Medium=[[2d8+14]] b}}{{Small=[[2d6+14]] b}}{{Tiny=[[1d6+14]] b}}
 
 REGURGITATE HUGE
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Huge**}} {{ranged=[[d20+21[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Regurgitate Huge**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE LARGE
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Large**}} {{ranged=[[d20+21[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Regurgitate Large**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE MEDUIM
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Meduim**}} {{ranged=[[d20+21[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Regurgitate Meduim**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE SMALL
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Small**}} {{ranged=[[d20+21[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Regurgitate Small**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE TINY
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Tiny**}} {{ranged=[[d20+21[Hit]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm &#9658; **Regurgitate Tiny**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}}
 
 SWALLOW WHOLE
 &{template:default} {{name=Purple Worm &#9658; **Swallow Whole**}} {{damage=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}} {{&bull;=*Toughness 24*}}

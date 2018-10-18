@@ -9,6 +9,10 @@ import re
 # Maybe moderate performance.
 # Improve it if you want it's all open source for you to do whatever with.
 
+# todo: \"(.+?)\" to capture inside quotes. replace spaces with ~
+# then do parse stuff, then replace ~ with spaces again at the end
+# \dd\S+ to match a die
+
 def hasNumbers(str):
 	return any(char.isdigit() for char in str)
 
@@ -19,8 +23,28 @@ def isNumber(word):
 def getNumber(data):
 	for word in data:
 		if (isNumber(word)):
-			return ensurePlus(word)
+			return ensurePlus(processPrompts(word))
 	return ""
+
+def processPrompts(data, inside = False):
+	global promptCount
+	pipe = "|"
+	brace = "}"
+	if (inside):
+		pipe = "&#124;"
+		brace = "&#125;"
+
+	regex = re.findall('((\d+)\?(.\D+)?)', data)
+	for r in regex:
+		value = r[1]
+		name = r[2]
+		if (name == ""):
+			name = "Prompt"
+
+		prompt = "?{%s%s%s%s%s[%s]" % (name, promptCount, pipe, value, brace, name.upper())
+		promptCount += "&#8203;"
+		data = data.replace(r[0], prompt)
+	return data
 
 def getWord(data, ignore = "", ignore2 = ""):
 	for word in data:
@@ -76,6 +100,23 @@ def wrapDice(data):
 			return "[[%s]]" % (data)
 	return data
 
+def processQuotes(data):
+	regex = re.findall('(\"(.+?)\")', data)
+	for r in regex:
+		data = data.replace(r[0], r[0].replace(" ", "~~~~~").replace('"', ''))
+	return data
+
+def finishQuotes(data):
+	return data.replace("~~~~~", " ")
+
+def processDice(data):
+	data = processQuotes(data)
+	data = processPrompts(data)
+	regex = re.findall("([0-9]+d?\S+|d+[0-9+]\S)", data);
+	for r in regex:
+		data = data.replace(r, "[[%s]]" % r)
+	return finishQuotes(data)
+
 if (len(sys.argv) > 1):
 	infiles = [str(sys.argv[1])]
 else:
@@ -106,7 +147,7 @@ for infile in infiles:
 		contents = "\n%s" % (file.read())
 
 		data = contents.split("\n>")
-		macro = "# Generating macros from %s %s.\n\n" % (file.name, datetime.datetime.now())
+		macroOut = "# Generating macros from %s %s.\n\n" % (file.name, datetime.datetime.now())
 		macroCount = 0;
 
 		for d in data:
@@ -129,6 +170,10 @@ for infile in infiles:
 			blanks = ""
 			bullets = "&bull;"
 			promptInfo = ""
+			preMacroNote = ""
+			macroId = ""
+			macro = ""
+			promptCount = ""
 
 			for line in lines:
 				if (line == ""):
@@ -165,6 +210,14 @@ for infile in infiles:
 					bullets += "&#8203;"
 					continue
 
+				if (linedata.startswith("?")):
+					promptInfo = linedata.split(" ", 1)[1].strip()
+					continue
+
+				if (linedata.startswith(".")):
+					preMacroNote = "&bull; %s \n" % linedata.split(" ", 1)[1].strip()
+					continue
+
 				if (not hasTitle):
 					title = ""
 
@@ -178,7 +231,8 @@ for infile in infiles:
 
 					titleCode = linedata.upper().strip()
 
-					macro += "%s\n&{template:default} {{name=%s%s}} " % (stripUrl.upper(), configImage, title)
+					macroId = stripUrl.upper()
+					macro += "&{template:default} {{name=%s%s}} " % (configImage, title)
 
 					if (titleCode == "SKILLS"):
 						skills = "?{Skill"
@@ -198,17 +252,15 @@ for infile in infiles:
 					blanks += "&#8203;"
 					continue;
 
-				if (linedata.startswith("?")):
-					promptInfo = linedata.split(" ", 1)[1].strip()
-
 				if (":" in linedata):
 					split = linedata.split(":")
+					rightside = processQuotes(split[1])
 					words = split[1].split(" ")
-					rightside = ""
+					output = ""
 					for word in words:
-						rightside += parseDamageType(wrapDice(word)) + " "
+						output += processDice(word) + " "
 
-					footer += "{{%s=%s}}" % (string.capwords(split[0].strip()), rightside.strip())
+					footer += "{{%s=%s}}" % (split[0].capitalize().strip(), output.strip())
 					continue
 
 				words = linedata.strip().split(" ")
@@ -228,10 +280,10 @@ for infile in infiles:
 
 					hitBonus = getNumber(words)
 
-					macro += "{{%s=[[d20%s[Hit]+%s+%s]] %s}} " % (attackType, hitBonus, mapenalty, generatePrompt("Hit Bonus", 0), info.strip())
+					macro += "{{%s=[[d20%s[HIT]+%s+%s]] %s}} " % (attackType, hitBonus, mapenalty, generatePrompt("Hit Bonus", 0), info.strip())
 
 				if ("range" in words):
-					macro += "{{range=%s}} " % (string.capwords(line.split(" ", 1)[1]))
+					macro += "{{range=%s}} " % (string.capwords(linedata.split(" ", 1)[1]))
 
 				if ("sneak" in words):
 					footer += "{{Sneak Attack=[[%s]]}} " % (getNumber(words))
@@ -386,8 +438,14 @@ for infile in infiles:
 				macro += "%s}\n\n" % (inits)
 				macroCount += 1
 
-		macro += "# %s Macros generated." % (macroCount)
+			# Clear the prompt info
+			promptInfo = ""
+
+			if (macroId != ""):
+				macroOut += macroId + "\n" + preMacroNote + macro
+
+		macroOut += "# %s Macros generated." % (macroCount)
 
 		outfile = open("_%s-macros.txt" % (infile.split(".")[0]), "w")
-		outfile.write(macro.strip())
+		outfile.write(macroOut.strip())
 		outfile.close()

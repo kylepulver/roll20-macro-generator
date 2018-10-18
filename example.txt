@@ -24,8 +24,10 @@ melee +3 agile # Agile will change the MAP options
 
 > Longsword
 ? Note inside prompt
+. Prechat text! (This appears in chat before the roll.)
 melee +4
 1d8+2 s
+true strike?: d20+4 # true strike has you roll again
 
 > Shortbow
 ranged +5 # Make a d20 ranged strike with +5
@@ -82,6 +84,8 @@ label: value
 roll: d20+4
 damage: 4d4
 test: d100
+prompt: 1d20+4?Hit Bonus
+raging scimitar: 2d8+2+0?"Raging?"+1?Forceful
 * A note about this macro
 * Another note here
 * More notes
