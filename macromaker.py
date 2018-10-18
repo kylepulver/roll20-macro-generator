@@ -443,7 +443,7 @@ for infile in infiles:
 				macro += "\n\nINITIATIVE (GENERATED FROM SKILLS)\n&{template:default} {{name=%s&#9658; **Initiative**}} %s}" % (configName, inits)
 				macroCount += 1
 
-				macro += "\n\nSECRET SKILL CHECK (GENERATED FROM SKILLS)\n&{template:default} {{name=%s&#9658; **Secret Skills**}} %s}" % (configName, secretskills)
+				macro += "\n\nSECRET SKILL CHECK (GENERATED FROM SKILLS)\n/w gm &{template:default} {{name=%s&#9658; **Secret Skills**}} %s}" % (configName, secretskills)
 
 			# Clear the prompt info
 			promptInfo = ""
