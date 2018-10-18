@@ -171,6 +171,7 @@ for infile in infiles:
 			bullets = "&bull;"
 			promptInfo = ""
 			preMacroNote = ""
+			gmNotes = ""
 			macroId = ""
 			macro = ""
 			promptCount = ""
@@ -216,6 +217,10 @@ for infile in infiles:
 
 				if (linedata.startswith(".")):
 					preMacroNote = "&bull; %s \n" % linedata.split(" ", 1)[1].strip()
+					continue
+
+				if (linedata.startswith("%")):
+					gmNotes += "\n/w gm &bull; ``%s``" % linedata.split(" ", 1)[1].strip()
 					continue
 
 				if (not hasTitle):
@@ -428,21 +433,23 @@ for infile in infiles:
 				macro += "%s}" % (skills)
 
 			macro += footer.strip()
-			macro = macro.strip() + "\n\n"
+			macro = macro.strip()
 
 			macroCount += 1
 
 			# Repeat Skills to generate Initiative macro
 			if (isSkill):
-				macro += "INITIATIVE\n&{template:default} {{name=Initiative}} "
-				macro += "%s}\n\n" % (inits)
+				macro += "\n\nINITIATIVE\n&{template:default} {{name=Initiative}} "
+				macro += "%s}" % (inits)
 				macroCount += 1
 
 			# Clear the prompt info
 			promptInfo = ""
 
 			if (macroId != ""):
-				macroOut += macroId + "\n" + preMacroNote + macro
+				macroOut += macroId + "\n" + preMacroNote + macro + gmNotes + "\n\n"
+
+			# for d in data
 
 		macroOut += "# %s Macros generated." % (macroCount)
 
