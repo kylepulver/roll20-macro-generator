@@ -9,10 +9,6 @@ import re
 # Maybe moderate performance.
 # Improve it if you want it's all open source for you to do whatever with.
 
-# todo: \"(.+?)\" to capture inside quotes. replace spaces with ~
-# then do parse stuff, then replace ~ with spaces again at the end
-# \dd\S+ to match a die
-
 def hasNumbers(str):
 	return any(char.isdigit() for char in str)
 
@@ -156,6 +152,7 @@ for infile in infiles:
 			damage = ""
 			footer = ""
 			skills = ""
+			secretskills = ""
 			inits = ""
 			comment = ""
 			canCrit = False
@@ -242,6 +239,7 @@ for infile in infiles:
 					if (titleCode == "SKILLS"):
 						skills = "?{Skill"
 						inits = "?{Initiative"
+						secretskills = "?{Skill"
 
 					if (titleCode == "ABILITY"):
 						skills = "?{Ability"
@@ -375,6 +373,9 @@ for infile in infiles:
 					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, getNumber(words), generatePrompt("%s Bonus" % (skillName), 0, True))
 					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillName, getNumber(words), generatePrompt("Initiative Bonus", 0, True))
 
+					skillroll = "[[d20%s+%s]]" % (getNumber(words), generatePrompt("%s Bonus" % (skillName), 0, True))
+					secretskills += "|%s (%s),{{%s=%s %s %s %s&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, skillroll, skillroll, skillroll, skillroll)
+
 				if (titleCode == "ABILITY"):
 					isAbility = True
 					isDamage = False
@@ -439,9 +440,10 @@ for infile in infiles:
 
 			# Repeat Skills to generate Initiative macro
 			if (isSkill):
-				macro += "\n\nINITIATIVE\n&{template:default} {{name=Initiative}} "
-				macro += "%s}" % (inits)
+				macro += "\n\nINITIATIVE (GENERATED FROM SKILLS)\n&{template:default} {{name=%s&#9658; **Initiative**}} %s}" % (configName, inits)
 				macroCount += 1
+
+				macro += "\n\nSECRET SKILL CHECK (GENERATED FROM SKILLS)\n&{template:default} {{name=%s&#9658; **Secret Skills**}} %s}" % (configName, secretskills)
 
 			# Clear the prompt info
 			promptInfo = ""
@@ -452,6 +454,8 @@ for infile in infiles:
 			# for d in data
 
 		macroOut += "# %s Macros generated." % (macroCount)
+		macroOut += "\n# Created by Roll20 Macro Generator (Pathfinder Playtest)"
+		macroOut += "\n# https://github.com/kylepulver/roll20-macro-generator"
 
 		outfile = open("_%s-macros.txt" % (infile.split(".")[0]), "w")
 		outfile.write(macroOut.strip())

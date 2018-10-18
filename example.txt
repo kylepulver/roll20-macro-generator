@@ -79,13 +79,18 @@ other +1
 > saves
 1 4 2 # fort ref will
 
+> Monster Attack
+melee 10
+2d6+2 b
+% Fort 15 (Mummy Rot)
+% This will be whispered to the GM!
+% Perfect if you ARE the GM!
+
 > Freeform Macro
 label: value
 roll: d20+4
 damage: 4d4
 test: d100
-prompt: 1d20+4?Hit Bonus
-raging scimitar: 2d8+2+0?"Raging?"+1?Forceful
 * A note about this macro
 * Another note here
 * More notes
