@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2018-10-18 15:09:56.793024.
+# Generating macros from example.txt 2018-10-18 17:04:25.837911.
 
 SCIMITAR
 &{template:default} {{name=&#9658; **Scimitar**}} {{melee=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d8+2+?{S Bonus|0}[S BONUS]]] S}} {{critical=[[1d8+2+?{S Bonus|0}[S BONUS]]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -8,7 +8,7 @@ CLAW
 
 LONGSWORD
 &bull; Prechat text! (This appears in chat before the roll.) 
-&{template:default} {{name=&#9658; **Longsword**}} {{melee=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus (Note inside prompt)|0}[HIT BONUS]]] }} {{damage=[[1d8+2+?{S Bonus (Note inside prompt)|0}[S BONUS]]] S}} {{critical=[[1d8+2+?{S Bonus (Note inside prompt)|0}[S BONUS]]] S}} {{True strike?=[[d20]]+4}}
+&{template:default} {{name=&#9658; **Longsword**}} {{melee=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus (Note inside prompt)|0}[HIT BONUS]]] }} {{damage=[[1d8+2+?{S Bonus (Note inside prompt)|0}[S BONUS]]] S}} {{critical=[[1d8+2+?{S Bonus (Note inside prompt)|0}[S BONUS]]] S}} {{True strike?=[[d20+4]]}}
 
 SHORTBOW
 &{template:default} {{name=&#9658; **Shortbow**}} {{ranged=[[d20+5[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d6+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[1d6+?{P Bonus|0}[P BONUS]]] P [[2d10]] Deadly}} {{&bull;=*Deadly*}}
@@ -50,11 +50,14 @@ MONSTER ATTACK
 /w gm &bull; ``Perfect if you ARE the GM!``
 
 FREEFORM MACRO
-&{template:default} {{name=&#9658; **Freeform Macro**}} {{Label=value}}{{Roll=[[d20]]+4}}{{Damage=[[4d4]]}}{{Test=[[d10]]0}}{{&bull;=*A note about this macro*}} {{&bull;&#8203;=*Another note here*}} {{&bull;&#8203;&#8203;=*More notes*}} {{&bull;&#8203;&#8203;&#8203;=*See where this is going?*}}
+&{template:default} {{name=&#9658; **Freeform Macro**}} {{Label=value}}{{Roll=[[d20+4]]}}{{Damage=[[4d4]]}}{{Test=[[d100]]}}{{&bull;=*A note about this macro*}} {{&bull;&#8203;=*Another note here*}} {{&bull;&#8203;&#8203;=*More notes*}} {{&bull;&#8203;&#8203;&#8203;=*See where this is going?*}}
+
+PROMPTS
+&{template:default} {{name=&#9658; **Prompts**}} {{Attack=[[d20+4+?{Raging?|5}[RAGING?]+?{Something Else?&#8203;|2}[SOMETHING ELSE?]]]}}{{Damage=[[2d6+?{Prompt&#8203;&#8203;|4}[PROMPT]]] B}}{{Another=[[1d20+4+?{Raging?&#8203;&#8203;&#8203;|5}[RAGING?]]]}}{{Spaces=[[1d20+?{Spaces need quotes!&#8203;&#8203;&#8203;&#8203;|18}[SPACES NEED QUOTES!]]]}}
 
 IMAGE
-&{template:default} {{name=&#9658; **Image**}} {{=[x](https://i.imgur.com/Q0y8EcX.jpg)}}{{&#8203;=[x](https://i.imgur.com/3OUxNg9.png)}}{{&#8203;&#8203;=[x](https://i.imgur.com/NYffg7C.gif)}}{{Roll=[[d20]]+[[10]]}}{{&bull;=*Testing images!*}}
+&{template:default} {{name=&#9658; **Image**}} {{=[x](https://i.imgur.com/Q0y8EcX.jpg)}}{{&#8203;=[x](https://i.imgur.com/3OUxNg9.png)}}{{&#8203;&#8203;=[x](https://i.imgur.com/NYffg7C.gif)}}{{Roll=[[d20+10]]}}{{&bull;=*Testing images!*}}
 
-# 17 Macros generated.
+# 18 Macros generated.
 # Created by Roll20 Macro Generator (Pathfinder Playtest)
 # https://github.com/kylepulver/roll20-macro-generator

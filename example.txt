@@ -96,6 +96,19 @@ test: d100
 * More notes
 * See where this is going?
 
+> Prompts
+attack: d20+4+5?"Raging?"+2?"Something Else?"
+# Adding a ? after a number, followed by text will generate
+# a prompt for that value in Roll20! You also dont need to
+# add text, like so:
+damage: 2d6+4? B
+# Note that is only works in freeform macros, which use
+# the label: value syntax. If your prompt name has spaces
+# you must wrap it in quotes. To make sure it doesnt break,
+# dont use numbers in your prompt comments.
+another: 1d20+4+5?Raging?
+spaces: 1d20+18?"Spaces need quotes!"
+
 > Image
 https://i.imgur.com/Q0y8EcX.jpg # Image url must have .jpg
 https://i.imgur.com/3OUxNg9.png # or png

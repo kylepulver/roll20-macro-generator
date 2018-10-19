@@ -30,7 +30,7 @@ def processPrompts(data, inside = False):
 		pipe = "&#124;"
 		brace = "&#125;"
 
-	regex = re.findall('((\d+)\?(.\D+)?)', data)
+	regex = re.findall('((\d+)\?([^+\-]+)?)', data)
 	for r in regex:
 		value = r[1]
 		name = r[2]
@@ -99,19 +99,20 @@ def wrapDice(data):
 def processQuotes(data):
 	regex = re.findall('(\"(.+?)\")', data)
 	for r in regex:
-		data = data.replace(r[0], r[0].replace(" ", "~~~~~").replace('"', ''))
+		processed = r[0].replace(" ", "~~~~~")
+		processed = processed.replace("\"", '')
+		data = data.replace(r[0], processed)
 	return data
 
 def finishQuotes(data):
 	return data.replace("~~~~~", " ")
 
 def processDice(data):
-	data = processQuotes(data)
 	data = processPrompts(data)
-	regex = re.findall("([0-9]+d?\S+|d+[0-9+]\S)", data);
+	regex = re.findall("([0-9]+d?\S+|d+[0-9]\S+)", data);
 	for r in regex:
 		data = data.replace(r, "[[%s]]" % r)
-	return finishQuotes(data)
+	return data
 
 if (len(sys.argv) > 1):
 	infiles = [str(sys.argv[1])]
@@ -258,10 +259,11 @@ for infile in infiles:
 				if (":" in linedata):
 					split = linedata.split(":")
 					rightside = processQuotes(split[1])
-					words = split[1].split(" ")
+					words = rightside.split(" ")
 					output = ""
 					for word in words:
 						output += processDice(word) + " "
+					output = finishQuotes(output)
 
 					footer += "{{%s=%s}}" % (split[0].capitalize().strip(), output.strip())
 					continue
