@@ -140,6 +140,7 @@ for infile in infiles:
 		configImage = ""
 		configTitles = True
 		configName = ""
+		configGmInit = False
 
 		contents = "\n%s" % (file.read())
 
@@ -202,6 +203,11 @@ for infile in infiles:
 							configTitles = True
 					if (command == "name"):
 						configName = "%s " % (setting)
+					if (command == "gminit"):
+							if (setting == "off"):
+								configGmInit = False
+							if (setting == "on"):
+								configGmInit = True
 					continue
 
 				if (linedata.startswith("*")):
@@ -442,7 +448,11 @@ for infile in infiles:
 
 			# Repeat Skills to generate Initiative macro
 			if (isSkill):
-				macro += "\n\nINITIATIVE (GENERATED FROM SKILLS)\n&{template:default} {{name=%s&#9658; **Initiative**}} %s}" % (configName, inits)
+				gmInit = ""
+				if (configGmInit):
+					gmInit = "/w gm "
+
+				macro += "\n\nINITIATIVE (GENERATED FROM SKILLS)\n%s&{template:default} {{name=%s&#9658; **Initiative**}} %s}" % (gmInit, configName, inits)
 				macroCount += 1
 
 				macro += "\n\nSECRET SKILL CHECK (GENERATED FROM SKILLS)\n/w gm &{template:default} {{name=%s&#9658; **Secret Skills**}} %s}" % (configName, secretskills)
