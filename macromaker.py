@@ -382,7 +382,8 @@ for infile in infiles:
 					inits += "|%s (%s),{{%s=[[d20%s+%s &{tracker&#125;]]&#125;&#125;" % (skillName, getNumber(words), skillName, getNumber(words), generatePrompt("Initiative Bonus", 0, True))
 
 					skillroll = "[[d20%s+%s]]" % (getNumber(words), generatePrompt("%s Bonus" % (skillName), 0, True))
-					secretskills += "|%s (%s),{{%s=%s %s %s %s&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, skillroll, skillroll, skillroll, skillroll)
+					# secretskills += "|%s (%s),{{%s=%s %s %s %s&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, skillroll, skillroll, skillroll, skillroll)
+					secretskills += "|%s (%s),{{%s=[?](%s)&#125;&#125;" % (skillName, getNumber(words), skillNameLabel, skillroll)
 
 				if (titleCode == "ABILITY"):
 					isAbility = True
