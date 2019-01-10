@@ -1,4 +1,4 @@
-# Generating macros from hill-giant.txt 2019-01-09 21:46:47.166127.
+# Generating macros from hill-giant.txt 2019-01-09 21:49:41.676109.
 
 STATS
 &{template:default} {{name=Hill Giant - **Stats**}} ?{Stats|Strength (+6),{{Strength=[[d20+6+?{Strength Bonus&#124;0&#125;[STRENGTH BONUS]]]&#125;&#125;|Dexterity (-1),{{Dexterity=[[d20-1+?{Dexterity Bonus&#124;0&#125;[DEXTERITY BONUS]]]&#125;&#125;|Constitution (+4),{{Constitution=[[d20+4+?{Constitution Bonus&#124;0&#125;[CONSTITUTION BONUS]]]&#125;&#125;|Intelligence (-2),{{Intelligence=[[d20-2+?{Intelligence Bonus&#124;0&#125;[INTELLIGENCE BONUS]]]&#125;&#125;|Wisdom (+0),{{Wisdom=[[d20+0+?{Wisdom Bonus&#124;0&#125;[WISDOM BONUS]]]&#125;&#125;|Charisma (-2),{{Charisma=[[d20-2+?{Charisma Bonus&#124;0&#125;[CHARISMA BONUS]]]&#125;&#125;|Fortitude (+14),{{Fortitude=[[d20+14+?{Fortitude Bonus&#124;0&#125;[FORTITUDE BONUS]]]&#125;&#125;|Reflex (+10),{{Reflex=[[d20+10+?{Reflex Bonus&#124;0&#125;[REFLEX BONUS]]]&#125;&#125;|Will (+8),{{Will=[[d20+8+?{Will Bonus&#124;0&#125;[WILL BONUS]]]&#125;&#125;}
@@ -10,7 +10,7 @@ FIST
 &{template:default} {{name=Hill Giant - **Fist**}} {{melee=[[d20+17[HIT]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+7+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+7+?{B Bonus|0}[B BONUS]]] B}}
 
 ROCK
-&{template:default} {{name=Hill Giant - **Rock**}} {{melee=[[d20+15[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Hill Giant - **Rock**}} {{ranged=[[d20+15[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}}
 
 SKILLS
 &{template:default} {{name=Hill Giant - **Skills**}} ?{Skill|Perception (+14),{{Perception=[[d20+14+?{Perception Bonus&#124;0&#125;[PERCEPTION BONUS]]]&#125;&#125;|Athletics (+15),{{Athletics=[[d20+15+?{Athletics Bonus&#124;0&#125;[ATHLETICS BONUS]]]&#125;&#125;|Intimidation (+13),{{Intimidation=[[d20+13+?{Intimidation Bonus&#124;0&#125;[INTIMIDATION BONUS]]]&#125;&#125;|Other (+7),{{?{Skill Name&#124;Other&#125;=[[d20+7+?{Other Bonus&#124;0&#125;[OTHER BONUS]]]&#125;&#125;}

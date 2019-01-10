@@ -1,4 +1,4 @@
-# Generating macros from purpleworm.txt 2019-01-09 21:46:47.168127.
+# Generating macros from purpleworm.txt 2019-01-09 21:49:41.678109.
 
 JAWS
 &{template:default} {{name=Purple Worm - **Jaws**}} {{melee=[[d20+25[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d12+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d12+14+?{P Bonus|0}[P BONUS]]] P [[2d12]] Deadly}} {{&bull;=*Grab*}}

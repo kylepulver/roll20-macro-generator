@@ -13,7 +13,7 @@ melee 17 agile
 3d8+7 b
 
 > rock
-melee 15
+ranged 15
 2d10+7 b
 
 > skills
