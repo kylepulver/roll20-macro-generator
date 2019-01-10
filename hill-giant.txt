@@ -1,0 +1,23 @@
+character: Hill Giant
+
+> stats
+6 -1 4 -2 0 -2 22 19 14 10 8 135 35
+# shorthand for str dex con int wis cha ac tac fort ref will hp speed
+
+> greatclub
+melee 17
+3d10+7 b
+
+> fist
+melee 17 agile
+3d8+7 b
+
+> rock
+melee 15
+2d10+7 b
+
+> skills
+perception 14
+athletics 15
+intimidation 13
+other 7

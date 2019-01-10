@@ -3,6 +3,7 @@ import datetime
 import string
 import os
 import re
+import base64
 
 # Listen, this ain't pretty, but for now it works.
 # This is real code. It might not be ideal, but this is what peak performance looks like.
@@ -131,7 +132,7 @@ abilityFullTypes = ["strength", "dexterity", "constitution", "intelligence", "wi
 skillTypes = ["perception", "acrobatics", "arcana", "athletics", "crafting", "deception", "diplomacy", "intimidation", "medicine", "nature", "occultism", "performance", "religion", "society", "stealth", "survival", "thievery"]
 
 for infile in infiles:
-	if ("-macros" in infile):
+	if (infile.startswith("_")):
 		continue
 	if (not infile.endswith(".txt")):
 		continue
@@ -141,6 +142,7 @@ for infile in infiles:
 		configTitles = True
 		configName = ""
 		configGmInit = False
+		configCharMaker = False;
 
 		contents = "\n%s" % (file.read())
 
@@ -148,14 +150,24 @@ for infile in infiles:
 		macroOut = "# Generating macros from %s %s.\n\n" % (file.name, datetime.datetime.now())
 		macroCount = 0;
 
+		charMakerOut = "";
+		hp = "";
+		ac = "";
+		tac = "";
+		speed = "";
+
 		for d in data:
 			lines = d.strip(">").split("\n")
 
+			skills = "?{Skill"
+			inits = "?{Initiative"
+			secretskills = "?{Skill"
+			abilities = "?{Ability"
+			saves = "?{Save"
+
 			damage = ""
-			footer = ""
-			skills = ""
-			secretskills = ""
-			inits = ""
+			crit = ""
+			footer = ""		
 			comment = ""
 			canCrit = False
 			isSkill = False
@@ -163,6 +175,7 @@ for infile in infiles:
 			isAbility = False
 			isSave = False
 			isDamage = True
+			isFatal = False;
 			deadly = ""
 			hasTitle = False
 			damageLabel = "damage"
@@ -174,6 +187,7 @@ for infile in infiles:
 			macroId = ""
 			macro = ""
 			promptCount = ""
+			
 
 			for line in lines:
 				if (line == ""):
@@ -184,6 +198,10 @@ for infile in infiles:
 
 				linedata = line.split("#")[0].strip();
 
+				if (linedata.startswith("character:")):
+					configName = linedata.split(":", 1)[1].strip()
+					configCharMaker = True
+					continue
 				if (linedata.startswith("config:")):
 					commandline = linedata.split(":", 1)[1]
 					commandsplit = commandline.split("=")
@@ -204,10 +222,15 @@ for infile in infiles:
 					if (command == "name"):
 						configName = "%s " % (setting)
 					if (command == "gminit"):
-							if (setting == "off"):
-								configGmInit = False
-							if (setting == "on"):
-								configGmInit = True
+						if (setting == "off"):
+							configGmInit = False
+						if (setting == "on"):
+							configGmInit = True
+					if (command == "charmaker"):
+						if (setting == "off"):
+							configCharMaker = False
+						if (setting == "on"):
+							configCharMaker = True
 					continue
 
 				if (linedata.startswith("*")):
@@ -236,23 +259,12 @@ for infile in infiles:
 
 					if (configTitles):
 						stripUrl = re.sub(r'http\S+', '', linedata).strip()
-						title += "%s&#9658; **%s**" % (configName, string.capwords(stripUrl))
+						title += "%s - **%s**" % (configName, string.capwords(stripUrl))
 
 					titleCode = linedata.upper().strip()
 
 					macroId = stripUrl.upper()
 					macro += "&{template:default} {{name=%s%s}} " % (configImage, title)
-
-					if (titleCode == "SKILLS"):
-						skills = "?{Skill"
-						inits = "?{Initiative"
-						secretskills = "?{Skill"
-
-					if (titleCode == "ABILITY"):
-						skills = "?{Ability"
-
-					if (titleCode == "SAVES"):
-						skills = "?{Save"
 
 					hasTitle = True
 					continue
@@ -355,6 +367,10 @@ for infile in infiles:
 					footer += "{{Persist=**%s** %s}} " % (getNumber(words), parseDamageType(getWord(words, "persist")))
 				elif ("extra" in words):
 					footer += "{{Extra Damage=[[%s]] %s}} " % (getNumber(words), parseDamageType(getWord(words, "extra")))
+				elif ("crit" in words):
+					isFatal = True;
+					crit += "[[%s+%s]] %s " % (getNumber(words), damagePrompt, damageType)
+
 				else: # But it works!
 					intersect = set(keywordsDamage).intersection(set(words))
 
@@ -395,7 +411,7 @@ for infile in infiles:
 
 						for score in scores:
 							label = abilityFullTypes[parseIndex].capitalize();
-							skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
+							abilities += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
 							parseIndex += 1
 						continue
 
@@ -403,7 +419,7 @@ for infile in infiles:
 					if (label == ""):
 						label = abilityFullTypes[parseIndex].capitalize()
 
-					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("%s Bonus" % (label), 0, True))
+					abilities += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("%s Bonus" % (label), 0, True))
 					
 				if (titleCode == "SAVES"):
 					isSave = True
@@ -415,7 +431,7 @@ for infile in infiles:
 
 						for score in scores:
 							label = saveFullTypes[parseIndex].capitalize();
-							skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
+							saves += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
 							parseIndex += 1
 						continue
 
@@ -423,7 +439,37 @@ for infile in infiles:
 					if (label == ""):
 						label = saveFullTypes[parseIndex].capitalize()
 
-					skills += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("%s Bonus" % (label), 0, True))
+					saves += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, getNumber(words), label, getNumber(words), generatePrompt("%s Bonus" % (label), 0, True))
+
+				if (titleCode == "STATS"):
+					parseIndex = 0
+					isDamage = False
+					stats = "?{Stats"
+
+					for score in words:
+						if (parseIndex < 6):
+							label = abilityFullTypes[parseIndex].capitalize();
+							stats += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
+
+						elif (parseIndex == 6):
+							ac = score
+
+						elif (parseIndex == 7):
+							tac = score
+
+						elif (parseIndex < 11):
+							label = saveFullTypes[parseIndex - 8].capitalize();
+							stats += "|%s (%s),{{%s=[[d20%s+%s]]&#125;&#125;" % (label, ensurePlus(score), label, ensurePlus(score), generatePrompt("%s Bonus" % (label), 0, True))
+
+						elif (parseIndex == 11):
+							hp = score
+						elif (parseIndex == 12):
+							speed = score
+
+						parseIndex += 1
+
+					macro += stats + "}";
+
 
 			if (isDamage):
 				if (damage.strip() != ""):
@@ -431,16 +477,19 @@ for infile in infiles:
 
 			if (canCrit):
 				if (damage.strip() != ""):
-					macro += "{{critical=%s%s}} " % (damage.strip(), deadly)
+					if (isFatal):
+						macro += "{{critical=%s%s}} " % (crit.strip(), deadly)
+					else:
+						macro += "{{critical=%s%s}} " % (damage.strip(), deadly)
 			
 			if (isSkill):
 				macro += "%s}" % (skills)
 
 			if (isAbility):
-				macro += "%s}" % (skills)
+				macro += "%s}" % (abilities)
 
 			if (isSave):
-				macro += "%s}" % (skills)
+				macro += "%s}" % (saves)
 
 			macro += footer.strip()
 			macro = macro.strip()
@@ -453,16 +502,20 @@ for infile in infiles:
 				if (configGmInit):
 					gmInit = "/w gm "
 
-				macro += "\n\nINITIATIVE (GENERATED FROM SKILLS)\n%s&{template:default} {{name=%s&#9658; **Initiative**}} %s}" % (gmInit, configName, inits)
+				macro += "\n\nINITIATIVE (GENERATED FROM SKILLS)\n%s&{template:default} {{name=%s - **Initiative**}} %s}" % (gmInit, configName, inits)
 				macroCount += 1
 
-				macro += "\n\nSECRET SKILL CHECK (GENERATED FROM SKILLS)\n/w gm &{template:default} {{name=%s&#9658; **Secret Skills**}} %s}" % (configName, secretskills)
+				macro += "\n\nSECRET SKILL CHECK (GENERATED FROM SKILLS)\n/w gm &{template:default} {{name=%s - **Secret Skills**}} %s}" % (configName, secretskills)
 
 			# Clear the prompt info
 			promptInfo = ""
 
 			if (macroId != ""):
 				macroOut += macroId + "\n" + preMacroNote + macro + gmNotes + "\n\n"
+				if (configCharMaker):
+					toEncode = preMacroNote + macro + gmNotes;
+					encoded = base64.b64encode(bytes(toEncode, 'utf-8')).decode('utf-8');
+					charMakerOut += "--ability " + macroId + " >> " + encoded + " ";
 
 			# for d in data
 
@@ -473,3 +526,9 @@ for infile in infiles:
 		outfile = open("_%s-macros.txt" % (infile.split(".")[0]), "w")
 		outfile.write(macroOut.strip())
 		outfile.close()
+
+		if (charMakerOut != ""):
+			charMakerOut = "!make --name " + configName + " --hp " + hp + " --ac " + ac + " --tac " + tac + " --speed " + speed + " " + charMakerOut;
+			outfile = open("__%s-char.txt" % (infile.split(".")[0]), "w")
+			outfile.write(charMakerOut.strip());
+			outfile.close();

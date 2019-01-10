@@ -1,49 +1,49 @@
-# Generating macros from purpleworm.txt 2018-10-25 13:02:30.033801.
+# Generating macros from purpleworm.txt 2019-01-09 21:46:47.168127.
 
 JAWS
-&{template:default} {{name=Purple Worm &#9658; **Jaws**}} {{melee=[[d20+25[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d12+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d12+14+?{P Bonus|0}[P BONUS]]] P [[2d12]] Deadly}} {{&bull;=*Grab*}}
+&{template:default} {{name=Purple Worm - **Jaws**}} {{melee=[[d20+25[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d12+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d12+14+?{P Bonus|0}[P BONUS]]] P [[2d12]] Deadly}} {{&bull;=*Grab*}}
 
 STINGER (AGILE)
-&{template:default} {{name=Purple Worm &#9658; **Stinger (agile)**}} {{melee=[[d20+25[HIT]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{Save=Fort 30}} {{&bull;=*Purple Worm Venom*}}
+&{template:default} {{name=Purple Worm - **Stinger (agile)**}} {{melee=[[d20+25[HIT]+?{MAP|0|-4|-8}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{critical=[[3d8+14+?{P Bonus|0}[P BONUS]]] P}} {{Save=Fort 30}} {{&bull;=*Purple Worm Venom*}}
 
 BODY
-&{template:default} {{name=Purple Worm &#9658; **Body**}} {{melee=[[d20+24[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm - **Body**}} {{melee=[[d20+24[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{Huge=[[4d8+14]] b}}{{Large=[[3d8+14]] b}}{{Medium=[[2d8+14]] b}}{{Small=[[2d6+14]] b}}{{Tiny=[[1d6+14]] b}}
+&{template:default} {{name=Purple Worm - **Regurgitate**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{Huge=[[4d8+14]] b}}{{Large=[[3d8+14]] b}}{{Medium=[[2d8+14]] b}}{{Small=[[2d6+14]] b}}{{Tiny=[[1d6+14]] b}}
 
 REGURGITATE HUGE
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Huge**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm - **Regurgitate Huge**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[4d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE LARGE
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Large**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm - **Regurgitate Large**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[3d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE MEDUIM
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Meduim**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm - **Regurgitate Meduim**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d8+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE SMALL
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Small**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm - **Regurgitate Small**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d6+14+?{B Bonus|0}[B BONUS]]] B}}
 
 REGURGITATE TINY
-&{template:default} {{name=Purple Worm &#9658; **Regurgitate Tiny**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}}
+&{template:default} {{name=Purple Worm - **Regurgitate Tiny**}} {{ranged=[[d20+21[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[1d6+14+?{B Bonus|0}[B BONUS]]] B}}
 
 SWALLOW WHOLE
-&{template:default} {{name=Purple Worm &#9658; **Swallow Whole**}} {{damage=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}} {{&bull;=*Toughness 24*}}
+&{template:default} {{name=Purple Worm - **Swallow Whole**}} {{damage=[[2d10+7+?{B Bonus|0}[B BONUS]]] B}} {{&bull;=*Toughness 24*}}
 
 SKILLS
-&{template:default} {{name=Purple Worm &#9658; **Skills**}} ?{Skill|Perception (+19),{{Perception=[[d20+19+?{Perception Bonus&#124;0&#125;[PERCEPTION BONUS]]]&#125;&#125;|Acrobatics (+20),{{Acrobatics=[[d20+20+?{Acrobatics Bonus&#124;0&#125;[ACROBATICS BONUS]]]&#125;&#125;|Athletics (+28),{{Athletics=[[d20+28+?{Athletics Bonus&#124;0&#125;[ATHLETICS BONUS]]]&#125;&#125;|Other (+16),{{?{Skill Name&#124;Other&#125;=[[d20+16+?{Other Bonus&#124;0&#125;[OTHER BONUS]]]&#125;&#125;}
+&{template:default} {{name=Purple Worm - **Skills**}} ?{Skill|Perception (+19),{{Perception=[[d20+19+?{Perception Bonus&#124;0&#125;[PERCEPTION BONUS]]]&#125;&#125;|Acrobatics (+20),{{Acrobatics=[[d20+20+?{Acrobatics Bonus&#124;0&#125;[ACROBATICS BONUS]]]&#125;&#125;|Athletics (+28),{{Athletics=[[d20+28+?{Athletics Bonus&#124;0&#125;[ATHLETICS BONUS]]]&#125;&#125;|Other (+16),{{?{Skill Name&#124;Other&#125;=[[d20+16+?{Other Bonus&#124;0&#125;[OTHER BONUS]]]&#125;&#125;}
 
 INITIATIVE (GENERATED FROM SKILLS)
-&{template:default} {{name=Purple Worm &#9658; **Initiative**}} ?{Initiative|Perception (+19),{{Perception=[[d20+19+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;|Acrobatics (+20),{{Acrobatics=[[d20+20+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;|Athletics (+28),{{Athletics=[[d20+28+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;|Other (+16),{{Other=[[d20+16+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;}
+&{template:default} {{name=Purple Worm - **Initiative**}} ?{Initiative|Perception (+19),{{Perception=[[d20+19+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;|Acrobatics (+20),{{Acrobatics=[[d20+20+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;|Athletics (+28),{{Athletics=[[d20+28+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;|Other (+16),{{Other=[[d20+16+?{Initiative Bonus&#124;0&#125;[INITIATIVE BONUS] &{tracker&#125;]]&#125;&#125;}
 
 SECRET SKILL CHECK (GENERATED FROM SKILLS)
-/w gm &{template:default} {{name=Purple Worm &#9658; **Secret Skills**}} ?{Skill|Perception (+19),{{Perception=[?]([[d20+19+?{Perception Bonus&#124;0&#125;[PERCEPTION BONUS]]])&#125;&#125;|Acrobatics (+20),{{Acrobatics=[?]([[d20+20+?{Acrobatics Bonus&#124;0&#125;[ACROBATICS BONUS]]])&#125;&#125;|Athletics (+28),{{Athletics=[?]([[d20+28+?{Athletics Bonus&#124;0&#125;[ATHLETICS BONUS]]])&#125;&#125;|Other (+16),{{?{Skill Name&#124;Other&#125;=[?]([[d20+16+?{Other Bonus&#124;0&#125;[OTHER BONUS]]])&#125;&#125;}
+/w gm &{template:default} {{name=Purple Worm - **Secret Skills**}} ?{Skill|Perception (+19),{{Perception=[?]([[d20+19+?{Perception Bonus&#124;0&#125;[PERCEPTION BONUS]]])&#125;&#125;|Acrobatics (+20),{{Acrobatics=[?]([[d20+20+?{Acrobatics Bonus&#124;0&#125;[ACROBATICS BONUS]]])&#125;&#125;|Athletics (+28),{{Athletics=[?]([[d20+28+?{Athletics Bonus&#124;0&#125;[ATHLETICS BONUS]]])&#125;&#125;|Other (+16),{{?{Skill Name&#124;Other&#125;=[?]([[d20+16+?{Other Bonus&#124;0&#125;[OTHER BONUS]]])&#125;&#125;}
 
 ABILITY
-&{template:default} {{name=Purple Worm &#9658; **Ability**}} ?{Ability|Str (+10),{{Str=[[d20+10+?{Str Bonus&#124;0&#125;[STR BONUS]]]&#125;&#125;|Dex (-2),{{Dex=[[d20-2+?{Dex Bonus&#124;0&#125;[DEX BONUS]]]&#125;&#125;|Con (+7),{{Con=[[d20+7+?{Con Bonus&#124;0&#125;[CON BONUS]]]&#125;&#125;|Int (-5),{{Int=[[d20-5+?{Int Bonus&#124;0&#125;[INT BONUS]]]&#125;&#125;|Wis (+0),{{Wis=[[d20+0+?{Wis Bonus&#124;0&#125;[WIS BONUS]]]&#125;&#125;|Cha (-3),{{Cha=[[d20-3+?{Cha Bonus&#124;0&#125;[CHA BONUS]]]&#125;&#125;}
+&{template:default} {{name=Purple Worm - **Ability**}} ?{Ability|Str (+10),{{Str=[[d20+10+?{Str Bonus&#124;0&#125;[STR BONUS]]]&#125;&#125;|Dex (-2),{{Dex=[[d20-2+?{Dex Bonus&#124;0&#125;[DEX BONUS]]]&#125;&#125;|Con (+7),{{Con=[[d20+7+?{Con Bonus&#124;0&#125;[CON BONUS]]]&#125;&#125;|Int (-5),{{Int=[[d20-5+?{Int Bonus&#124;0&#125;[INT BONUS]]]&#125;&#125;|Wis (+0),{{Wis=[[d20+0+?{Wis Bonus&#124;0&#125;[WIS BONUS]]]&#125;&#125;|Cha (-3),{{Cha=[[d20-3+?{Cha Bonus&#124;0&#125;[CHA BONUS]]]&#125;&#125;}
 
 SAVES
-&{template:default} {{name=Purple Worm &#9658; **Saves**}} ?{Save|Fort (+26),{{Fort=[[d20+26+?{Fort Bonus&#124;0&#125;[FORT BONUS]]]&#125;&#125;|Ref (+16),{{Ref=[[d20+16+?{Ref Bonus&#124;0&#125;[REF BONUS]]]&#125;&#125;|Will (+18),{{Will=[[d20+18+?{Will Bonus&#124;0&#125;[WILL BONUS]]]&#125;&#125;}
+&{template:default} {{name=Purple Worm - **Saves**}} ?{Save|Fort (+26),{{Fort=[[d20+26+?{Fort Bonus&#124;0&#125;[FORT BONUS]]]&#125;&#125;|Ref (+16),{{Ref=[[d20+16+?{Ref Bonus&#124;0&#125;[REF BONUS]]]&#125;&#125;|Will (+18),{{Will=[[d20+18+?{Will Bonus&#124;0&#125;[WILL BONUS]]]&#125;&#125;}
 
 # 15 Macros generated.
 # Created by Roll20 Macro Generator (Pathfinder Playtest)

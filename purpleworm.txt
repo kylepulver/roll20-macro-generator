@@ -1,4 +1,4 @@
-config: name = Purple Worm
+character: Purple Worm
 
 > Jaws
 melee +25

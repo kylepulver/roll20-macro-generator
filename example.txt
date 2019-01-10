@@ -40,6 +40,12 @@ melee +4 agile
 1d4 p/s
 2d6 sneak # Use 'sneak' for sneak attack
 
+> Pick
+melee +8
+2d8+4 p
+4d10+8 crit # Use 'crit' to override the critical damage amount (for things like fatal.)
+4 extra # Extra damage from critical specialization
+
 > Pack Attack
 melee +2
 1d6+2 p
