@@ -140,7 +140,6 @@ var Base64 = {
 
 on("chat:message", function(msg) {
     if (playerIsGM(msg.playerid)) {
-        log(msg.content)
         if (msg.type == "api" && msg.content.startsWith("!make ")) {
             args = msg.content.split(" --");
             
