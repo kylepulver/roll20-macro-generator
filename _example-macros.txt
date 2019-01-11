@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2019-01-09 21:49:41.673108.
+# Generating macros from example.txt 2019-01-11 09:24:37.860966.
 
 SCIMITAR
 &{template:default} {{name= - **Scimitar**}} {{melee=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d8+2+?{S Bonus|0}[S BONUS]]] S}} {{critical=[[1d8+2+?{S Bonus|0}[S BONUS]]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -26,10 +26,10 @@ BURNING HANDS
 &{template:default} {{name= - **Burning Hands**}} {{damage=[[2d6+?{Fire Bonus|0}[FIRE BONUS]]] Fire}} {{Save=Reflex 15}} {{&bull;=*Basic Save*}}
 
 HEAL (2 ACTION)
-&{template:default} {{name= - **Heal (2 Action)**}} {{ranged=[[d20+5[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] Touch}} {{range=30ft}} {{Healing=[[2d8+4+?{Healing Bonus|0}[HEALING BONUS]]] Healing}} {{Heightened=[[?{Heighten|0,|1 (+2d8),2d8|2 (+4d8),4d8|3 (+6d8),6d8|4 (+8d8),8d8|5 (+10d8),10d8|6 (+12d8),12d8|7 (+14d8),14d8|8 (+16d8),16d8|9 (+18d8),18d8|10 (+20d8),20d8}]] }}
+&{template:default} {{name= - **Heal (2 Action)**}} {{ranged=[[d20+5[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] Touch}} {{range=30ft}} {{Healing=[[2d8+4+?{Healing Bonus|0}[HEALING BONUS]]] Healing}} {{Heightened=[[?{Heighten 1+|0,|1 (+2d8),2d8|2 (+4d8),4d8|3 (+6d8),6d8|4 (+8d8),8d8|5 (+10d8),10d8|6 (+12d8),12d8|7 (+14d8),14d8|8 (+16d8),16d8|9 (+18d8),18d8|10 (+20d8),20d8}]] Heighten}}
 
 ACID ARROW
-&{template:default} {{name= - **Acid Arrow**}} {{ranged=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] Touch}} {{range=120ft}} {{damage=[[1d8+4+?{Acid Bonus|0}[ACID BONUS]]] Acid}} {{critical=[[1d8+4+?{Acid Bonus|0}[ACID BONUS]]] Acid}} {{Persist=**1d6** Acid}} {{Heightened=[[?{Heighten|0,|2 (+1d8),1d8|4 (+2d8),2d8|6 (+3d8),3d8|8 (+4d8),4d8|10 (+5d8),5d8}]] }}{{Heightened&#8203;=+?{Hgt Persist|0,|2 (+1d6),**1d6**|4 (+2d6),**2d6**|6 (+3d6),**3d6**|8 (+4d6),**4d6**|10 (+5d6),**5d6**} Acid}}
+&{template:default} {{name= - **Acid Arrow**}} {{ranged=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] Touch}} {{range=120ft}} {{damage=[[1d8+4+?{Acid Bonus|0}[ACID BONUS]]] Acid}} {{critical=[[1d8+4+?{Acid Bonus|0}[ACID BONUS]]] Acid}} {{Persist=**1d6** Acid}} {{Heightened=[[?{Heighten 2+|0,|2 (+1d8),1d8|4 (+2d8),2d8|6 (+3d8),3d8|8 (+4d8),4d8|10 (+5d8),5d8}]] Heighten}}{{Heightened&#8203;=+?{Hgt Persist 2+|0,|2 (+1d6),**1d6**|4 (+2d6),**2d6**|6 (+3d6),**3d6**|8 (+4d6),**4d6**|10 (+5d6),**5d6**} Heighten}}
 
 SKILLS
 &{template:default} {{name= - **Skills**}} ?{Skill|Perception (+3),{{Perception=[[d20+3+?{Perception Bonus&#124;0&#125;[PERCEPTION BONUS]]]&#125;&#125;|Athletics (+2),{{Athletics=[[d20+2+?{Athletics Bonus&#124;0&#125;[ATHLETICS BONUS]]]&#125;&#125;|Acrobatics (+4),{{Acrobatics=[[d20+4+?{Acrobatics Bonus&#124;0&#125;[ACROBATICS BONUS]]]&#125;&#125;|Arcana (-4),{{Arcana=[[d20-4+?{Arcana Bonus&#124;0&#125;[ARCANA BONUS]]]&#125;&#125;|Lore Desert (+2),{{Lore Desert=[[d20+2+?{Lore Desert Bonus&#124;0&#125;[LORE DESERT BONUS]]]&#125;&#125;|Other (+1),{{?{Skill Name&#124;Other&#125;=[[d20+1+?{Other Bonus&#124;0&#125;[OTHER BONUS]]]&#125;&#125;}
