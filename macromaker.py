@@ -317,35 +317,34 @@ for infile in infiles:
 				if ("deadly" in words):
 					deadly += " [[%s]] Deadly" % (getNumber(words))
 
-				# Okay I got really lazy for the heightening parts sorry
-
 				if ("heighten" in words):
-                    			times = 1
+					times = 1
  
-                    			macroLabel = "Heighten"
-                    			if ("persist" in words):
-                        			macroLabel = "Hgt Persist"
+					macroLabel = "Heighten"
+					if ("persist" in words):
+						macroLabel = "Hgt Persist"
+
+					# parse level+increment part, the remove this token so it doesn't get confused with dmg
+					level, step = [int(token) for token in words[0].split("+")]
+					words = words[1:]
  
-                    			level, step = [int(token) for token in words[0].split("+")]
-                    			words = words[1:]
+					macroLabel += " %s+" % level
  
-                    			macroLabel += " %s+" % level
+					heighten = getNumber(words)
+					heightenMacro = "?{%s|0," % (macroLabel)
+					for x in range(step, 11, step):
+						number = increaseDie(heighten, times)
+						secondNumber = number
+						if ("persist" in words):
+							secondNumber = "**%s**" % (number)
  
-                    			heighten = getNumber(words)
-                    			heightenMacro = "?{%s|0," % (macroLabel)
-                    			for x in range(step, 11, step):
-                        			number = increaseDie(heighten, times)
-                        			secondNumber = number;
-                        			if ("persist" in words):
-                            			secondNumber = "**%s**" % (number)
+						heightenMacro += "|%s (+%s),%s" % (x, number, secondNumber)
+						times += 1
  
-                        			heightenMacro += "|%s (+%s),%s" % (x, number, secondNumber)
-                        			times += 1
- 
-                    			if ("persist" in words):
-                        			footer += "{{Heightened&#8203;=+%s} %s}}" % (heightenMacro, getWord(words, "heighten+1", "persist").capitalize())
-                    			else:
-                        			footer += "{{Heightened=[[%s}]] %s}}" % (heightenMacro, getWord(words, "heighten+1").capitalize())
+					if ("persist" in words):
+						footer += "{{Heightened&#8203;=+%s} %s}}" % (heightenMacro, getWord(words, "heighten+1", "persist").capitalize())
+					else:
+						footer += "{{Heightened=[[%s}]] %s}}" % (heightenMacro, getWord(words, "heighten+1").capitalize())
  
 				elif ("persist" in words): # Sorry
 					footer += "{{Persist=**%s** %s}} " % (getNumber(words), parseDamageType(getWord(words, "persist")))
