@@ -61,15 +61,15 @@ reflex save 15
 ranged +5 touch # Adding touch for touch attack
 range 30ft
 2d8+4 healing
-heighten+1 2d8 # specify heighten without spaces
+1+1 heighten 2d8  # base spell level+heighten increment goes first
 
 > Acid Arrow # More complex spell
 ranged +4 touch
 range 120ft
 1d8+4 acid
 1d6 acid persist # label for persistent damage
-heighten+2 1d8
-heighten+2 1d6 acid persist
+2+2 heighten 1d8
+2+2 heighten 1d6 acid persist
 
 > skills # Special spot for skills!
 perception +3
@@ -181,9 +181,8 @@ config: prompts = off
 # * heal
 # * healing
 #
-# For heightening spells, use the words:
-# * heighten+1
-# * heighten+2
-# Do not put spaces between heighten and the +1 or +2
+# For heightening spells, specify the base level and heighten increment before the word heighten:
+# * 3+1 heighten
+# * 2+2 heighten
 # If there is also persistent damage from heightening
 # include that in a new line with the word persist.
