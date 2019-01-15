@@ -1,4 +1,4 @@
-# Generating macros from example.txt 2019-01-11 09:24:37.860966.
+# Generating macros from example.txt 2019-01-12 05:13:40.434371.
 
 SCIMITAR
 &{template:default} {{name= - **Scimitar**}} {{melee=[[d20+4[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[1d8+2+?{S Bonus|0}[S BONUS]]] S}} {{critical=[[1d8+2+?{S Bonus|0}[S BONUS]]] S}} {{&bull;=*Forceful, Sweep*}}
@@ -48,9 +48,9 @@ SAVES
 
 MONSTER ATTACK
 &{template:default} {{name= - **Monster Attack**}} {{melee=[[d20+10[HIT]+?{MAP|0|-5|-10}[MAP]+?{Hit Bonus|0}[HIT BONUS]]] }} {{damage=[[2d6+2+?{B Bonus|0}[B BONUS]]] B}} {{critical=[[2d6+2+?{B Bonus|0}[B BONUS]]] B}}
-/w gm &bull; ``Fort 15 (Mummy Rot)``
-/w gm &bull; ``This will be whispered to the GM!``
-/w gm &bull; ``Perfect if you ARE the GM!``
+/w gm &nbsp; ``Fort 15 (Mummy Rot)``
+/w gm &nbsp; ``This will be whispered to the GM!``
+/w gm &nbsp; ``Perfect if you ARE the GM!``
 
 FREEFORM MACRO
 &{template:default} {{name= - **Freeform Macro**}} {{Label=value}}{{Roll=[[d20+4]]}}{{Damage=[[4d4]]}}{{Test=[[d100]]}}{{&bull;=*A note about this macro*}} {{&bull;&#8203;=*Another note here*}} {{&bull;&#8203;&#8203;=*More notes*}} {{&bull;&#8203;&#8203;&#8203;=*See where this is going?*}}

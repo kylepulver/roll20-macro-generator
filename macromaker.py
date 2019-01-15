@@ -175,9 +175,10 @@ for infile in infiles:
 			isAbility = False
 			isSave = False
 			isDamage = True
-			isFatal = False;
+			isFatal = False
 			deadly = ""
 			hasTitle = False
+			isHidden = False
 			damageLabel = "damage"
 			blanks = ""
 			bullets = "&bull;"
@@ -201,6 +202,7 @@ for infile in infiles:
 				if (linedata.startswith("character:")):
 					configName = linedata.split(":", 1)[1].strip()
 					configCharMaker = True
+					configGmInit = True
 					continue
 				if (linedata.startswith("config:")):
 					commandline = linedata.split(":", 1)[1]
@@ -244,10 +246,12 @@ for infile in infiles:
 
 				if (linedata.startswith(".")):
 					preMacroNote = "&bull; %s \n" % linedata.split(" ", 1)[1].strip()
+					if (isHidden):
+						preMacroNote = "/w gm " + preMacroNote
 					continue
 
 				if (linedata.startswith("%")):
-					gmNotes += "\n/w gm &bull; ``%s``" % linedata.split(" ", 1)[1].strip()
+					gmNotes += "\n/w gm %s" % linedata.split(" ", 1)[1].strip()
 					continue
 
 				if (not hasTitle):
@@ -265,6 +269,10 @@ for infile in infiles:
 
 					macroId = stripUrl.upper()
 					macro += "&{template:default} {{name=%s%s}} " % (configImage, title)
+
+					if (titleCode == "GM"):
+						macro = "/w gm " + macro
+						isHidden = True;
 
 					hasTitle = True
 					continue
@@ -350,6 +358,8 @@ for infile in infiles:
 					footer += "{{Persist=**%s** %s}} " % (getNumber(words), parseDamageType(getWord(words, "persist")))
 				elif ("extra" in words):
 					footer += "{{Extra Damage=[[%s]] %s}} " % (getNumber(words), parseDamageType(getWord(words, "extra")))
+				elif ("miss" in words):
+					footer += "{{Miss Damage=[[%s]] %s}}" % (getNumber(words), parseDamageType(getWord(words, "miss")))
 				elif ("crit" in words):
 					isFatal = True;
 					crit += "[[%s+%s]] %s " % (getNumber(words), damagePrompt, damageType)
@@ -480,7 +490,7 @@ for infile in infiles:
 			macroCount += 1
 
 			# Repeat Skills to generate Initiative macro
-			if (isSkill):
+			if (isSkill and not configCharMaker):
 				gmInit = ""
 				if (configGmInit):
 					gmInit = "/w gm "
@@ -499,6 +509,12 @@ for infile in infiles:
 					toEncode = preMacroNote + macro + gmNotes;
 					encoded = base64.b64encode(bytes(toEncode, 'utf-8')).decode('utf-8');
 					charMakerOut += "--ability " + macroId + " >> " + encoded + " ";
+
+					if (isSkill):
+						toEncode = "/w gm &{template:default} {{name=%s - **Initiative**}} %s}" % (configName, inits)
+						encoded = base64.b64encode(bytes(toEncode, 'utf-8')).decode('utf-8');
+						charMakerOut += "--ability INIT >> " + encoded + " ";
+
 
 			# for d in data
 
