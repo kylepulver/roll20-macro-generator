@@ -1,4 +1,4 @@
-# Generating macros from hill-giant.txt 2019-01-12 05:13:40.437371.
+# Generating macros from hill-giant.txt 2019-01-30 01:27:15.834069.
 
 STATS
 &{template:default} {{name=Hill Giant - **Stats**}} ?{Stats|Strength (+6),{{Strength=[[d20+6+?{Strength Bonus&#124;0&#125;[STRENGTH BONUS]]]&#125;&#125;|Dexterity (-1),{{Dexterity=[[d20-1+?{Dexterity Bonus&#124;0&#125;[DEXTERITY BONUS]]]&#125;&#125;|Constitution (+4),{{Constitution=[[d20+4+?{Constitution Bonus&#124;0&#125;[CONSTITUTION BONUS]]]&#125;&#125;|Intelligence (-2),{{Intelligence=[[d20-2+?{Intelligence Bonus&#124;0&#125;[INTELLIGENCE BONUS]]]&#125;&#125;|Wisdom (+0),{{Wisdom=[[d20+0+?{Wisdom Bonus&#124;0&#125;[WISDOM BONUS]]]&#125;&#125;|Charisma (-2),{{Charisma=[[d20-2+?{Charisma Bonus&#124;0&#125;[CHARISMA BONUS]]]&#125;&#125;|Fortitude (+14),{{Fortitude=[[d20+14+?{Fortitude Bonus&#124;0&#125;[FORTITUDE BONUS]]]&#125;&#125;|Reflex (+10),{{Reflex=[[d20+10+?{Reflex Bonus&#124;0&#125;[REFLEX BONUS]]]&#125;&#125;|Will (+8),{{Will=[[d20+8+?{Will Bonus&#124;0&#125;[WILL BONUS]]]&#125;&#125;}

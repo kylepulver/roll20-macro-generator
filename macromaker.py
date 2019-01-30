@@ -143,6 +143,9 @@ for infile in infiles:
 		configName = ""
 		configGmInit = False
 		configCharMaker = False;
+		configEscalation = False;
+
+		sheetName = "";
 
 		contents = "\n%s" % (file.read())
 
@@ -150,11 +153,13 @@ for infile in infiles:
 		macroOut = "# Generating macros from %s %s.\n\n" % (file.name, datetime.datetime.now())
 		macroCount = 0;
 
-		charMakerOut = "";
-		hp = "";
-		ac = "";
-		tac = "";
-		speed = "";
+		charMakerOut = ""
+		hp = ""
+		ac = ""
+		tac = ""
+		speed = ""
+		fullText = ""
+		blankTokens = "&#8203;"
 
 		for d in data:
 			lines = d.strip(">").split("\n")
@@ -188,7 +193,6 @@ for infile in infiles:
 			macroId = ""
 			macro = ""
 			promptCount = ""
-			
 
 			for line in lines:
 				if (line == ""):
@@ -201,9 +205,13 @@ for infile in infiles:
 
 				if (linedata.startswith("character:")):
 					configName = linedata.split(":", 1)[1].strip()
+					sheetName = configName;
 					configCharMaker = True
 					configGmInit = True
 					continue
+				if (linedata.startswith("name:")):
+					configName = linedata.split(":", 1)[1].strip()
+					continue;
 				if (linedata.startswith("config:")):
 					commandline = linedata.split(":", 1)[1]
 					commandsplit = commandline.split("=")
@@ -233,7 +241,16 @@ for infile in infiles:
 							configCharMaker = False
 						if (setting == "on"):
 							configCharMaker = True
+					if (command == "escalation"):
+						if (setting == "off"):
+							configEscalation = False
+						if (setting == "on"):
+							configEscalation = True
 					continue
+
+				if (not isHidden and linedata != "" and hasTitle):
+					fullText += "{{%s=%s}} " % (blankTokens, linedata)
+					blankTokens += "&#8203;"
 
 				if (linedata.startswith("*")):
 					footer += "{{%s=*%s*}} " % (bullets, linedata.strip("*").strip())
@@ -274,6 +291,10 @@ for infile in infiles:
 						macro = "/w gm " + macro
 						isHidden = True;
 
+					if (not isHidden):
+						fullText += "{{%s=**%s**}} " % (blankTokens, titleCode)
+						blankTokens += "&#8203;"
+
 					hasTitle = True
 					continue
 
@@ -301,6 +322,10 @@ for infile in infiles:
 					attackType = intersect.pop()
 					canCrit = True
 
+					escalation = ""
+					if ("esc" in words):
+						escalation = "+@{tracker|Escalation}[ESCALATION]"
+
 					mapenalty = "?{MAP|0|-5|-10}[MAP]"
 					if ("agile" in words):
 						mapenalty = "?{MAP|0|-4|-8}[MAP]"
@@ -311,7 +336,7 @@ for infile in infiles:
 
 					hitBonus = getNumber(words)
 
-					macro += "{{%s=[[d20%s[HIT]+%s+%s]] %s}} " % (attackType, hitBonus, mapenalty, generatePrompt("Hit Bonus", 0), info.strip())
+					macro += "{{%s=[[d20%s[HIT]+%s+%s%s]] %s}} " % (attackType, hitBonus, mapenalty, generatePrompt("Hit Bonus", 0), escalation, info.strip())
 
 				if ("range" in words):
 					macro += "{{range=%s}} " % (string.capwords(linedata.split(" ", 1)[1]))
@@ -514,9 +539,13 @@ for infile in infiles:
 						toEncode = "/w gm &{template:default} {{name=%s - **Initiative**}} %s}" % (configName, inits)
 						encoded = base64.b64encode(bytes(toEncode, 'utf-8')).decode('utf-8');
 						charMakerOut += "--ability INIT >> " + encoded + " ";
-
-
 			# for d in data
+
+		# toEncode = "/w gm &{template:default} {{name=%s}} %s}" % (configName, fullText.strip())
+		# encoded = base64.b64encode(bytes(toEncode, 'utf-8')).decode('utf-8');
+		# charMakerOut += "--ability _FULLTEXT >> " + encoded + " ";
+
+		gmnotes = base64.b64encode(bytes(contents, 'utf-8')).decode('utf-8');
 
 		macroOut += "# %s Macros generated." % (macroCount)
 		macroOut += "\n# Created by Roll20 Macro Generator (Pathfinder Playtest)"
@@ -527,7 +556,7 @@ for infile in infiles:
 		outfile.close()
 
 		if (charMakerOut != ""):
-			charMakerOut = "!make --name " + configName + " --hp " + hp + " --ac " + ac + " --tac " + tac + " --speed " + speed + " " + charMakerOut;
+			charMakerOut = "!make --name " + sheetName + " --hp " + hp + " --ac " + ac + " --tac " + tac + " --speed " + speed + " --gmnotes " + gmnotes + " " + charMakerOut;
 			outfile = open("__%s-char.txt" % (infile.split(".")[0]), "w")
 			outfile.write(charMakerOut.strip());
 			outfile.close();

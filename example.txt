@@ -22,6 +22,11 @@ melee +3 agile # Agile will change the MAP options
 1d6+1 s
 * Agile # Just a note
 
+> Escalation Die
+melee 5 esc # Uses the Escalation die
+1d6+2 p
+# The turn tracker must have an entry named "Escalation" in roll20
+
 > Longsword
 ? Note inside prompt
 . Prechat text! (This appears in chat before the roll.)
