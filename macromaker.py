@@ -144,6 +144,7 @@ for infile in infiles:
 		configGmInit = False
 		configCharMaker = False;
 		configEscalation = False;
+		configCritRolls = True
 
 		sheetName = "";
 
@@ -246,6 +247,11 @@ for infile in infiles:
 							configEscalation = False
 						if (setting == "on"):
 							configEscalation = True
+					if (command == "critrolls"):
+						if (setting == "on"):
+							configCritRolls = True
+						if(setting == "off"):
+							configCritRolls = False
 					continue
 
 				if (not isHidden and linedata != "" and hasTitle):
@@ -399,6 +405,9 @@ for infile in infiles:
 						if (damageType.lower() in keywordsHealing):
 							damageLabel = "Healing"
 							canCrit = False
+
+				if (configCritRolls == False):
+					canCrit = False
 
 				if (titleCode == "SKILLS"):
 					isSkill = True
